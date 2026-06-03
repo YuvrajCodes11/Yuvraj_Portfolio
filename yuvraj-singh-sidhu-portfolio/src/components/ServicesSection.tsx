@@ -35,11 +35,11 @@ export default function ServicesSection({ setActiveTab, onAddLog }: ServicesSect
       {/* Grid TITLE */}
       <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-art-beige-mid pb-4">
         <div>
-          <span className="font-mono text-art-charcoal/60 text-[10px] uppercase tracking-widest font-bold">[ENGINEERED_SOLUTIONS]</span>
-          <h2 className="font-serif text-3xl font-extrabold text-art-charcoal tracking-tight uppercase mt-1">Solutions for Digital Dominance</h2>
+          <span className="font-mono text-art-charcoal/60 text-[10px] uppercase tracking-widest font-bold">[MY SERVICES]</span>
+          <h2 className="font-serif text-3xl font-extrabold text-art-charcoal tracking-tight uppercase mt-1">Engineering Solutions & Services</h2>
         </div>
         <div className="mt-2 md:mt-0 font-mono text-[11px] text-art-charcoal/50">
-          SYSTEM THRESHOLD: <span className="text-art-charcoal font-bold font-mono">OPTIMAL</span>
+          SYSTEM STATE: <span className="text-art-charcoal font-bold font-mono">SECURE</span>
         </div>
       </div>
 
@@ -72,7 +72,7 @@ export default function ServicesSection({ setActiveTab, onAddLog }: ServicesSect
                   </span>
                   <div className="flex items-center space-x-1 font-mono text-[8px] text-art-charcoal/55">
                     <Activity className={`h-3 w-3 ${isHovered ? 'text-art-charcoal' : 'text-art-charcoal/45'}`} />
-                    <span>LOAD INDEX: {srv.loadIndex}%</span>
+                    <span>LOAD CAPACITY: {srv.loadIndex}%</span>
                   </div>
                 </div>
 
@@ -104,7 +104,7 @@ export default function ServicesSection({ setActiveTab, onAddLog }: ServicesSect
               {/* Lower Section (Features + Request Handshake) */}
               <div className="border-t border-art-beige-mid/45 pt-4 mt-4 flex items-center justify-between font-mono relative z-10">
                 <div className="space-y-1">
-                  <span className="text-[8px] text-art-charcoal/40 uppercase font-bold">CORE INTEGRATIONS</span>
+                  <span className="text-[8px] text-art-charcoal/40 uppercase font-bold">KEY CAPABILITIES</span>
                   <div className="flex space-x-2 text-[10px] text-art-charcoal/70">
                     {srv.features.slice(0, 2).map((feat, i) => (
                       <span key={i} className="flex items-center space-x-1 font-sans font-medium">
@@ -119,7 +119,7 @@ export default function ServicesSection({ setActiveTab, onAddLog }: ServicesSect
                   onClick={() => handleRequestService(srv)}
                   className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-sm border border-art-charcoal bg-art-charcoal text-[10px] text-art-bg font-bold tracking-wider transition-colors hover:bg-transparent hover:text-art-charcoal duration-300 uppercase cursor-pointer"
                 >
-                  <span>REQUEST LINK</span>
+                  <span>GET IN TOUCH</span>
                   <ArrowRight className="h-3 w-3" />
                 </button>
               </div>
@@ -133,16 +133,16 @@ export default function ServicesSection({ setActiveTab, onAddLog }: ServicesSect
       <div className="rounded-sm border border-art-beige-mid bg-art-bg/85 p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between font-mono text-xs text-art-charcoal/70 space-y-2 sm:space-y-0 shadow-xs">
         <div className="flex items-center space-x-2.5">
           <Fingerprint className="h-4 w-4 text-art-charcoal" />
-          <span>CRYPTOGRAPHIC SYSTEM VERIFIED BY AES_256_GCM HANDSHAKE ROUTING.</span>
+          <span>SECURE SYSTEM FULLY VERIFIED IN COMPLIANCE WITH SECURITY STANDARDS.</span>
         </div>
         <button 
           onClick={() => {
-            onAddLog('info', 'DIAGNOSTIC CORE: Requesting full network dump...');
+            onAddLog('info', 'DIAGNOSTIC CORE: Opening terminal monitor diagnostics...');
             setActiveTab('terminal');
           }}
           className="text-[10px] text-art-charcoal hover:text-art-charcoal/80 underline uppercase text-left font-bold cursor-pointer"
         >
-          INITIATE GRID SECURITY AUDIT
+          RUN DIAGNOSTICS & SYSTEM AUDIT
         </button>
       </div>
 

@@ -46,48 +46,43 @@ export default function ChroniclesSection({ onAddLog }: ChroniclesSectionProps) 
 
     const payloadText = mintyInput;
     setMintyInput('');
-    onAddLog('info', `MINTYNEX ENGINE: Intercepting payload: "${payloadText}"`);
+    onAddLog('info', `MINTYNEX INFO: Sending message: "${payloadText}"`);
     
     setMintyLogs(prev => [
       ...prev,
-      `> Encrypting message block with SECURE_AES_256...`,
+      `> Encrypting message safely...`,
     ]);
 
     setTimeout(() => {
       setMintyLogs(prev => [
         ...prev,
-        `> Handshaking routing gateway: [HANDSHAKE_OK]`,
+        `> Connecting to network router: [SUCCESS]`,
       ]);
     }, 400);
 
     setTimeout(() => {
-      const hops = [
-        `10.0.1.4 (NODE_GATEWAY_ALPHA)`,
-        `10.3.4.128 (MESH_RELAY_EAST)`,
-        `Client Destination [COMPLETED]`
-      ];
       setMintyLogs(prev => [
         ...prev,
-        `> Payload routed via hops:\n  - ${hops.join('\n  - ')}`,
-        `[SUCCESS] Packet received. Latency: 4.8ms. Sig: OK.`
+        `> Message successfully delivered to recipient.`,
+        `[SUCCESS] Message received. Latency: 4.8ms. Security: verified.`
       ]);
-      onAddLog('success', `MINTYNEX SUCCESS: Message block successfully relayed through 3 mesh hops.`);
+      onAddLog('success', `MINTYNEX SUCCESS: Message successfully delivered to the destination.`);
     }, 1000);
   };
 
   const handleCheckoutSim = () => {
     setIsSecureTransacting(true);
     setTransactionSuccess(false);
-    onAddLog('info', 'COMMERCE GATEWAY: Initiating security checkout pipeline...');
+    onAddLog('info', 'COMMERCE GATEWAY: Initiating secure checkout process...');
 
     setTimeout(() => {
-      onAddLog('info', 'COMMERCE GATEWAY: Forging RSA-4096 cryptographic signatures...');
+      onAddLog('info', 'COMMERCE GATEWAY: Verifying secure payment signatures...');
     }, 400);
 
     setTimeout(() => {
       setIsSecureTransacting(false);
       setTransactionSuccess(true);
-      onAddLog('success', 'COMMERCE SUCCESS: PCI-Compliant transaction finalized. Order logged [SIG_SHA256].');
+      onAddLog('success', 'COMMERCE SUCCESS: Payment mock transaction completed successfully!');
     }, 1500);
   };
 
@@ -155,12 +150,32 @@ export default function ChroniclesSection({ onAddLog }: ChroniclesSectionProps) 
                     <h3 className="font-serif text-2xl font-bold text-art-charcoal uppercase mt-1.5">{selectedProject.title}</h3>
                   </div>
                   <div className="flex space-x-2 font-mono">
-                    <a href={selectedProject.githubUrl} className="p-2 rounded-sm border border-art-beige-mid bg-art-bg/90 text-art-charcoal/70 hover:text-art-charcoal transition-all">
+                    <button 
+                      onClick={() => {
+                        if (selectedProject.githubUrl === '#') {
+                          onAddLog('info', `REPOSITORY ARCHIVE: "${selectedProject.title}" repository is active but currently private under secure corporate client review.`);
+                        } else {
+                          window.open(selectedProject.githubUrl, '_blank');
+                        }
+                      }}
+                      className="p-2 rounded-sm border border-art-beige-mid bg-art-bg/90 text-art-charcoal/70 hover:text-art-charcoal transition-all cursor-pointer"
+                      title="View GitHub Repository"
+                    >
                       <Github className="h-4 w-4" />
-                    </a>
-                    <a href={selectedProject.liveUrl} className="p-2 rounded-sm border border-art-beige-mid bg-art-bg/90 text-art-charcoal/70 hover:text-art-charcoal transition-all">
+                    </button>
+                    <button 
+                      onClick={() => {
+                        if (selectedProject.liveUrl === '#') {
+                          onAddLog('info', `LIVE PREVIEW: "${selectedProject.title}" private alpha sandbox is hosted locally on secure test stages.`);
+                        } else {
+                          window.open(selectedProject.liveUrl, '_blank');
+                        }
+                      }}
+                      className="p-2 rounded-sm border border-art-beige-mid bg-art-bg/90 text-art-charcoal/70 hover:text-art-charcoal transition-all cursor-pointer"
+                      title="View Live Demo"
+                    >
                       <ExternalLink className="h-4 w-4" />
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -229,16 +244,16 @@ export default function ChroniclesSection({ onAddLog }: ChroniclesSectionProps) 
                 <div className="space-y-5 flex-1 flex flex-col justify-between">
                   <div className="space-y-4">
                     <div>
-                      <h4 className="text-sm font-bold text-art-charcoal font-serif">Mesh Handshake Simulator</h4>
+                      <h4 className="text-sm font-bold text-art-charcoal font-serif">Real-Time Messaging Demo</h4>
                       <p className="text-[11px] text-art-charcoal/60 mt-1 leading-normal font-sans">
-                        Verify packet propagation and AES security rotation on the reactive routing grid.
+                        Test how messages are privately encrypted and sent over a simulated network router.
                       </p>
                     </div>
 
                     {/* Nodes Status indicators */}
                     <div className="border border-art-beige-mid bg-art-beige-light/20 p-3 rounded-sm space-y-3">
                       <div className="flex items-center justify-between text-[10px] text-art-charcoal/65">
-                        <span>NETWORK RELAYS ACTIVE</span>
+                        <span>ROUTER NODES ONLINE</span>
                         <span className="text-art-charcoal font-bold">{meshNodesCount}/12 NODES</span>
                       </div>
                       <div className="flex space-x-1.5 justify-center">
@@ -252,11 +267,11 @@ export default function ChroniclesSection({ onAddLog }: ChroniclesSectionProps) 
                         ))}
                       </div>
                       <div className="flex justify-between text-[8px] text-art-charcoal/45 uppercase font-bold">
-                        <span>THROUGH: {throughputVal} REQS/S</span>
+                        <span>LOAD: {throughputVal} MSG/S</span>
                         <button 
                           onClick={() => {
                             setMeshNodesCount(prev => prev === 12 ? 3 : prev + 1);
-                            onAddLog('info', 'ROUTING CONTROL: Calibrating grid capacity node offsets.');
+                            onAddLog('info', 'ROUTING CONTROL: Adjusting network capacity simulation.');
                           }} 
                           className="hover:text-art-charcoal underline cursor-pointer"
                         >
@@ -287,7 +302,7 @@ export default function ChroniclesSection({ onAddLog }: ChroniclesSectionProps) 
                       type="text"
                       value={mintyInput}
                       onChange={(e) => setMintyInput(e.target.value)}
-                      placeholder="ENTER TRANSACTION MESSAGE PAYLOAD..."
+                      placeholder="TYPE A TEST CHAT MESSAGE..."
                       className="flex-1 bg-art-bg border border-art-beige-dark rounded-sm px-2.5 py-1.5 text-[10px] focus:outline-none focus:border-art-charcoal uppercase font-bold text-art-charcoal"
                     />
                     <button
@@ -305,9 +320,9 @@ export default function ChroniclesSection({ onAddLog }: ChroniclesSectionProps) 
                 <div className="space-y-5 flex-1 flex flex-col justify-between">
                   <div className="space-y-4 font-serif">
                     <div>
-                      <h4 className="text-sm font-bold text-art-charcoal">Interactive Metallic Asset Customizer</h4>
+                      <h4 className="text-sm font-bold text-art-charcoal">Interactive Product Customizer</h4>
                       <p className="text-[11px] text-art-charcoal/60 mt-1 leading-normal font-sans">
-                        Manipulate structural vectors representing premium gold, emerald inserts or signature platinum alloys.
+                        Choose a product color and sizing below to see a live preview of the interactive item customizer.
                       </p>
                     </div>
 
@@ -335,8 +350,8 @@ export default function ChroniclesSection({ onAddLog }: ChroniclesSectionProps) 
                         </div>
                       </div>
                       
-                      <div className="absolute bottom-2 left-2 text-[8px] font-mono text-art-charcoal/45">
-                        NODE_DIMENSION: {ringSize}mm // METALLURGIC FLOW
+                      <div className="absolute bottom-2 left-2 text-[8px] font-mono text-art-charcoal/45 font-bold">
+                        RING DIMENSIONS: {ringSize}mm // METALLIC FINISH
                       </div>
                     </div>
 
@@ -345,14 +360,14 @@ export default function ChroniclesSection({ onAddLog }: ChroniclesSectionProps) 
                       
                       {/* Material selector */}
                       <div className="space-y-1.5">
-                        <span className="text-[9px] font-mono text-art-charcoal/40 uppercase font-bold">METAL_GRADE</span>
+                        <span className="text-[9px] font-mono text-art-charcoal/40 uppercase font-bold">RING_MATERIAL</span>
                         <div className="flex flex-col space-y-1.5">
                           {(['gold', 'emerald', 'platinum'] as const).map(metal => (
                             <button
                               key={metal}
                               onClick={() => {
                                 setRingMetal(metal);
-                                onAddLog('info', `COMMERCE CONFIG: Material updated to premium_${metal}.`);
+                                onAddLog('info', `COMMERCE CONFIG: Material updated to ${metal}.`);
                               }}
                               className={`text-left px-2.5 py-1 text-[10px] uppercase font-mono font-bold border transition rounded-sm cursor-pointer ${
                                 ringMetal === metal
@@ -368,14 +383,14 @@ export default function ChroniclesSection({ onAddLog }: ChroniclesSectionProps) 
 
                       {/* Dimensions selector */}
                       <div className="space-y-1.5">
-                        <span className="text-[9px] font-mono text-art-charcoal/40 uppercase font-bold">RING_SIZE_MM</span>
+                        <span className="text-[9px] font-mono text-art-charcoal/40 uppercase font-bold">SIZE</span>
                         <div className="grid grid-cols-2 gap-1.5 font-mono">
                           {['07', '08', '09', '10'].map(size => (
                             <button
                               key={size}
                               onClick={() => {
                                 setRingSize(size);
-                                onAddLog('info', `COMMERCE CONFIG: Ring caliper calibrated to ${size}mm.`);
+                                onAddLog('info', `COMMERCE CONFIG: Size calibrated to ${size}mm.`);
                               }}
                               className={`px-1 py-1 text-[10px] border text-center transition font-bold rounded-sm cursor-pointer ${
                                 ringSize === size
@@ -403,19 +418,19 @@ export default function ChroniclesSection({ onAddLog }: ChroniclesSectionProps) 
                       {isSecureTransacting ? (
                         <>
                           <RotateCw className="h-3.5 w-3.5 animate-spin" />
-                          <span>SIGNING RSA_4096 SHAFT...</span>
+                          <span>PROCESSING SECURE CHECKOUT...</span>
                         </>
                       ) : (
                         <>
                           <Lock className="h-3.5 w-3.5" />
-                          <span>SUBMIT SECURE TRANSACTION</span>
+                          <span>SIMULATE SECURE CHECKOUT</span>
                         </>
                       )}
                     </button>
                     {transactionSuccess && (
                       <div className="flex items-center space-x-2 text-art-charcoal text-[9px] justify-center mt-2.5 font-mono font-bold tracking-wide">
                         <span className="h-1.5 w-1.5 rounded-full bg-art-charcoal" />
-                        <span>CIPHER HANDSHAKE CONFIRMED [HASH OK]</span>
+                        <span>SECURE PAYMENT COMPLETED successfully!</span>
                       </div>
                     )}
                   </div>

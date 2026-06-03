@@ -76,12 +76,18 @@ export default function BioLinkModal({ isOpen, onClose, onDownloadManifest }: Bi
 
               {/* Avatar display inline */}
               <div className="flex items-center space-x-4 p-3 rounded-sm border border-art-beige-mid bg-art-beige-light/20">
-                <img 
-                  src={PERSONAL_INFO.avatarUrl} 
-                  alt={PERSONAL_INFO.name} 
-                  className="h-10 w-10 rounded-full object-cover grayscale contrast-110 border border-art-charcoal/20"
-                  referrerPolicy="no-referrer"
-                />
+                {PERSONAL_INFO.avatarUrl ? (
+                  <img 
+                    src={PERSONAL_INFO.avatarUrl} 
+                    alt={PERSONAL_INFO.name} 
+                    className="h-10 w-10 rounded-full object-cover grayscale contrast-110 border border-art-charcoal/20"
+                    referrerPolicy="no-referrer"
+                  />
+                ) : (
+                  <div className="h-10 w-10 rounded-full bg-art-charcoal text-art-bg flex items-center justify-center font-mono text-xs font-bold select-none shrink-0">
+                    YS
+                  </div>
+                )}
                 <div>
                   <h4 className="text-sm font-bold text-art-charcoal uppercase font-serif">{PERSONAL_INFO.name}</h4>
                   <span className="text-[9px] font-mono text-art-charcoal/60 font-semibold uppercase tracking-wider">CONNECT_NODE_OK &middot; STABLE</span>
@@ -122,7 +128,7 @@ export default function BioLinkModal({ isOpen, onClose, onDownloadManifest }: Bi
                   className="w-full flex items-center justify-center space-x-2 px-4 py-3 border border-art-charcoal bg-art-charcoal text-art-bg font-sans text-xs font-semibold tracking-wider uppercase transition-colors hover:bg-transparent hover:text-art-charcoal duration-300 cursor-pointer"
                 >
                   <FileText className="h-4 w-4" />
-                  <span>EXPORT PERSONAL ARCHIVES MANIFEST (.TXT)</span>
+                  <span>DOWNLOAD RESUME</span>
                 </button>
               </div>
 

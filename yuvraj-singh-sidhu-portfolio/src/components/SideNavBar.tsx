@@ -25,13 +25,19 @@ export default function SideNavBar({
       <div className="flex flex-col items-center text-center pb-6 border-b border-art-beige-mid/60">
         <div className="relative group">
           <div className="relative h-20 w-19 overflow-hidden rounded-md border border-art-charcoal/30 bg-art-beige-light p-1">
-            {/* Displaying elegant image avatar */}
-            <img 
-              src={PERSONAL_INFO.avatarUrl} 
-              alt={PERSONAL_INFO.name} 
-              className="h-full w-full object-cover group-hover:scale-105 transition duration-500 filter grayscale contrast-110 rounded-sm"
-              referrerPolicy="no-referrer"
-            />
+            {/* Displaying elegant image avatar or minimalist initials fallback */}
+            {PERSONAL_INFO.avatarUrl ? (
+              <img 
+                src={PERSONAL_INFO.avatarUrl} 
+                alt={PERSONAL_INFO.name} 
+                className="h-full w-full object-cover group-hover:scale-105 transition duration-500 filter grayscale contrast-110 rounded-sm"
+                referrerPolicy="no-referrer"
+              />
+            ) : (
+              <div className="h-full w-full flex items-center justify-center bg-art-charcoal text-art-bg rounded-sm font-mono text-[16px] font-bold select-none group-hover:bg-art-charcoal/90 transition-colors">
+                <span>YS</span>
+              </div>
+            )}
             {/* Status light overlay */}
             <div className="absolute bottom-1 right-1 h-3 w-3 rounded-full border-2 border-art-bg bg-art-charcoal animate-pulse" />
           </div>
@@ -47,7 +53,7 @@ export default function SideNavBar({
       <div className="flex-1 py-6 space-y-3.5">
         <div className="text-[10px] font-mono font-semibold text-art-charcoal/40 uppercase tracking-widest px-2 mb-2">SYSTEM_CONTROLS</div>
         
-        {/* Bio-Link Button */}
+        {/* Bio-Link Button commented out
         <button
           onClick={onBioLinkClick}
           className="w-full flex items-center justify-between text-left px-3 py-2.5 rounded-sm border border-art-beige-mid bg-art-bg/10 hover:border-art-charcoal hover:bg-art-beige-light/50 group text-art-charcoal transition-all duration-200 cursor-pointer"
@@ -58,6 +64,7 @@ export default function SideNavBar({
           </div>
           <span className="font-mono text-[9px] text-art-charcoal/40 group-hover:text-art-charcoal">[TREE]</span>
         </button>
+        */}
 
         {/* Matrix Toggle Button */}
         <button

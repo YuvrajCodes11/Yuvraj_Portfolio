@@ -11,10 +11,9 @@ interface HeroSectionProps {
 export default function HeroSection({ setActiveTab, onBioLinkClick }: HeroSectionProps) {
   const [typedTitle, setTypedTitle] = useState('');
   const roles = [
-    'SYSTEM ARCHITECT',
-    'JAVA ENTERPRISE DEVELOPER',
-    'MESH WORK INTEGRATOR',
-    'FULL-STACK ENGINEER'
+    'FULL-STACK DEVELOPER',
+    'JAVA DEVELOPER',
+    'APPLICATION ARCHITECT'
   ];
   const [roleIndex, setRoleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -63,7 +62,7 @@ export default function HeroSection({ setActiveTab, onBioLinkClick }: HeroSectio
           className="flex items-center space-x-2 border border-art-charcoal/20 bg-art-beige-light/50 px-4 py-1.5 rounded-full text-[10px] font-mono uppercase tracking-widest text-art-charcoal font-semibold"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-art-charcoal animate-pulse" />
-          <span>ESTABLISHING SECURE PROTOCOLS // {PERSONAL_INFO.status}</span>
+          <span>PORTFOLIO NETWORK STATUS // {PERSONAL_INFO.status}</span>
         </motion.div>
 
         {/* Hero Headline and Typography */}
@@ -72,9 +71,9 @@ export default function HeroSection({ setActiveTab, onBioLinkClick }: HeroSectio
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="font-mono text-art-charcoal/60 text-xs sm:text-xs tracking-[0.25em] uppercase"
+            className="font-mono text-art-charcoal/65 text-xs sm:text-xs tracking-[0.25em] uppercase"
           >
-            SYSTEM ARCHITECT // CLOUD PLATFORMS
+            FULL-STACK DEVELOPER
           </motion.p>
           
           <motion.h1
@@ -89,7 +88,7 @@ export default function HeroSection({ setActiveTab, onBioLinkClick }: HeroSectio
           {/* Typing Role Engine */}
           <div className="h-8 flex items-center justify-center font-mono">
             <span className="text-[11px] text-art-charcoal/50 font-bold uppercase tracking-wider">
-              ROLE:
+              FOCUS:
             </span>
             <span className="text-[12px] text-art-charcoal font-semibold tracking-widest ml-2 bg-art-beige-light/70 border-b border-art-charcoal px-2.5 py-0.5 rounded-sm">
               {typedTitle}
@@ -105,7 +104,7 @@ export default function HeroSection({ setActiveTab, onBioLinkClick }: HeroSectio
           transition={{ delay: 0.5, duration: 0.6 }}
           className="max-w-xl text-art-charcoal/80 text-[16px] sm:text-[18px] leading-relaxed italic font-serif"
         >
-          &ldquo;Engineering robust backends, clustering fault-tolerant databases, and creating immersive fluid UI frameworks with structural security.&rdquo;
+          &ldquo;Building secure, high-speed databases, reliable Java backends, and beautiful, interactive web applications.&rdquo;
         </motion.p>
 
         {/* Cyber Interactive Terminal Controls */}
@@ -121,7 +120,7 @@ export default function HeroSection({ setActiveTab, onBioLinkClick }: HeroSectio
             className="flex items-center justify-center space-x-2 px-6 py-3 border border-art-charcoal bg-art-charcoal text-art-bg font-sans text-xs tracking-widest uppercase font-semibold transition-all hover:bg-transparent hover:text-art-charcoal duration-300 cursor-pointer group"
           >
             <Terminal className="h-4 w-4" />
-            <span>INITIATE PROTOCOLS</span>
+            <span>GET IN TOUCH</span>
             <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1.5 transition-transform" />
           </button>
 
@@ -131,7 +130,7 @@ export default function HeroSection({ setActiveTab, onBioLinkClick }: HeroSectio
             className="flex items-center justify-center space-x-2 px-6 py-3 border border-art-beige-dark bg-art-beige-light/30 text-art-charcoal font-sans text-xs tracking-widest uppercase font-semibold transition-all hover:bg-art-beige-light/70 duration-300 cursor-pointer"
           >
             <Database className="h-4 w-4 text-art-charcoal/70" />
-            <span>ACCESS PAYLOADS</span>
+            <span>VIEW MY PROJECTS</span>
           </button>
         </motion.div>
 
@@ -143,7 +142,7 @@ export default function HeroSection({ setActiveTab, onBioLinkClick }: HeroSectio
           className="pt-6 flex flex-col items-center space-y-2 cursor-pointer"
           onClick={() => setActiveTab('nexus')}
         >
-          <span className="font-mono text-[9px] text-art-charcoal/40 tracking-[0.2em] uppercase">SCROLL TO UNLOCK CHRONICLES</span>
+          <span className="font-mono text-[9px] text-art-charcoal/40 tracking-[0.2em] uppercase">SCROLL TO EXPLORE SKILLS</span>
           <CornerDownRight className="h-3.5 w-3.5 text-art-charcoal/40 transform rotate-45 animate-bounce" />
         </motion.div>
       </div>

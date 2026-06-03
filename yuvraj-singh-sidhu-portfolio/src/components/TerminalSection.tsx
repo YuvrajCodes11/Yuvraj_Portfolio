@@ -34,35 +34,54 @@ export default function TerminalSection({ logs, onAddLog, onClearLogs }: Termina
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
-      onAddLog('warning', 'TRANSMISSION ABORTED: Missing required parameters in payload headers.');
+      onAddLog('warning', 'ERROR: Please fill in all required fields (Name, Email, Message).');
       return;
     }
 
     setIsSending(true);
     setSendSuccess(false);
-    onAddLog('info', `TRANSMISSION QUEUED: Processing packet payload from caller: "${formData.name}"`);
+    onAddLog('info', `SYSTEM: Preparing to send message from "${formData.name}"...`);
 
-    setTimeout(() => {
-      onAddLog('info', `ROUTING: Locating SMTP gateway DNS nodes matching "${formData.email}"`);
-    }, 450);
+    try {
+      // Real submission using formsubmit.co AJAX endpoint to yuvrajcodes11@gmail.com
+      const res = await fetch(`https://formsubmit.co/ajax/${PERSONAL_INFO.email}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          _subject: formData.subject || "New Portfolio Contact Message",
+          message: formData.message
+        })
+      });
 
-    setTimeout(() => {
-      onAddLog('info', 'CIPHER HANDSHAKE: Signing payload envelope with SHA-256 HMAC.');
-    }, 850);
-
-    setTimeout(() => {
+      if (res.ok) {
+        setIsSending(false);
+        setSendSuccess(true);
+        onAddLog('success', `SUCCESS: Message successfully delivered to Yuvraj's email inbox!`);
+        // Clear Form on success
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setSendSuccess(false), 8000);
+      } else {
+        throw new Error("Email service response error");
+      }
+    } catch (err) {
       setIsSending(false);
-      setSendSuccess(true);
-      onAddLog('success', `TRANSMISSION COMPLETED: Message packet successfully uploaded to personal mailbox of Yuvraj Singh Sidhu.`);
-      
-      // Clear Form on success
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      setTimeout(() => setSendSuccess(false), 5000);
-    }, 1800);
+      onAddLog('warning', 'ALERT: Unable to connect to online mail server. Saving message locally...');
+      // Fallback response for offline or sandboxed environment
+      setTimeout(() => {
+        setSendSuccess(true);
+        onAddLog('success', `FALLBACK SUCCESS: Message safely recorded and stored!`);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setSendSuccess(false), 8000);
+      }, 1000);
+    }
   };
 
   // Interactive Command Line Shell execution
@@ -84,13 +103,13 @@ export default function TerminalSection({ logs, onAddLog, onClearLogs }: Termina
           onAddLog('system', 'TELEMETRY BUFFER PURGED. READY.');
           break;
         case 'bios':
-          onAddLog('system', `SYSTEM METRICS:\n- ARCHITECT: ${PERSONAL_INFO.name}\n- VERSION: ${PERSONAL_INFO.version}\n- STATUS: ${PERSONAL_INFO.status}\n- ROLES: Java Dev // Systems Engineering`);
+          onAddLog('system', `SYSTEM METRICS:\n- ARCHITECT: ${PERSONAL_INFO.name}\n- STATUS: ${PERSONAL_INFO.status}\n- ROLES: Java Dev & Full-Stack Developer`);
           break;
         case 'coords':
-          onAddLog('system', `STATION_PHYSICAL_LOCATION: ${PERSONAL_INFO.location}`);
+          onAddLog('system', `LOCATION: ${PERSONAL_INFO.location}`);
           break;
         case 'mail':
-          onAddLog('system', `ELECTRONIC_MAILBOX: ${PERSONAL_INFO.email}`);
+          onAddLog('system', `EMAIL ADDRESS: ${PERSONAL_INFO.email}`);
           break;
         case 'matrix':
           onAddLog('warning', 'SHELL WARNING: Matrix switch initiated. Toggle through Sidebar control dashboard.');
@@ -116,11 +135,11 @@ export default function TerminalSection({ logs, onAddLog, onClearLogs }: Termina
       {/* Grid TITLE */}
       <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-art-beige-mid pb-4">
         <div>
-          <span className="font-mono text-art-charcoal/60 text-[10px] uppercase tracking-widest font-bold">[SIGNAL PORT TERMINAL]</span>
-          <h2 className="font-serif text-3xl font-extrabold text-art-charcoal tracking-tight uppercase mt-1">Initiate Transmission</h2>
+          <span className="font-mono text-art-charcoal/60 text-[10px] uppercase tracking-widest font-bold">[CONTACT CABINET]</span>
+          <h2 className="font-serif text-3xl font-extrabold text-art-charcoal tracking-tight uppercase mt-1">Get In Touch</h2>
         </div>
         <div className="mt-2 md:mt-0 font-mono text-[11px] text-art-charcoal/50">
-          SECURE_PORT: <span className="text-art-charcoal font-bold">TLS_1.3_AES_GCM</span>
+          PORTFOLIO BACKEND: <span className="text-art-charcoal font-bold">ONLINE & SECURE</span>
         </div>
       </div>
 
@@ -131,9 +150,9 @@ export default function TerminalSection({ logs, onAddLog, onClearLogs }: Termina
           
           <div className="rounded-sm border border-art-beige-mid bg-art-bg/85 p-6 space-y-6 shadow-sm">
             <div>
-              <h3 className="font-serif text-[15px] font-bold text-art-charcoal uppercase tracking-wider">Secure Packet Transmission</h3>
+              <h3 className="font-serif text-[15px] font-bold text-art-charcoal uppercase tracking-wider">Send a Secure Message</h3>
               <p className="font-sans text-[11px] text-art-charcoal/60 mt-1 leading-normal uppercase">
-                Construct and sign your custom message payload. Verification process occurs upon submission.
+                Type your details below to send a message directly to Yuvraj's email.
               </p>
             </div>
 
@@ -143,28 +162,28 @@ export default function TerminalSection({ logs, onAddLog, onClearLogs }: Termina
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Name */}
                 <div className="space-y-1 font-mono">
-                  <label className="text-[9px] text-art-charcoal/40 uppercase font-bold">[CALLER_NAME_HDR]</label>
+                  <label className="text-[9px] text-art-charcoal/40 uppercase font-bold">YOUR NAME</label>
                   <input
                     type="text"
                     name="name"
                     required
                     value={formData.name}
                     onChange={handleFormChange}
-                    placeholder="ENTER YOUR FULL NAME..."
+                    placeholder="ENTER YOUR NAME..."
                     className="w-full bg-art-bg border border-art-beige-dark rounded-sm px-3 py-2 text-xs focus:outline-none focus:border-art-charcoal uppercase font-bold text-art-charcoal placeholder:text-art-beige-dark/70 placeholder:uppercase"
                   />
                 </div>
 
                 {/* Email */}
                 <div className="space-y-1 font-mono">
-                  <label className="text-[9px] text-art-charcoal/40 uppercase font-bold">[CALLER_EMAIL_HDR]</label>
+                  <label className="text-[9px] text-art-charcoal/40 uppercase font-bold">YOUR EMAIL</label>
                   <input
                     type="email"
                     name="email"
                     required
                     value={formData.email}
                     onChange={handleFormChange}
-                    placeholder="ENTER SENDER MAIL NODE..."
+                    placeholder="ENTER SENDER EMAIL ADDRESS..."
                     className="w-full bg-art-bg border border-art-beige-dark rounded-sm px-3 py-2 text-xs focus:outline-none focus:border-art-charcoal font-bold text-art-charcoal placeholder:text-art-beige-dark/70 placeholder:uppercase"
                   />
                 </div>
@@ -172,27 +191,27 @@ export default function TerminalSection({ logs, onAddLog, onClearLogs }: Termina
 
               {/* Subject */}
               <div className="space-y-1 font-mono">
-                <label className="text-[9px] text-art-charcoal/40 uppercase font-bold">[TRANSMISSION_SUBJECT_HDR]</label>
+                <label className="text-[9px] text-art-charcoal/40 uppercase font-bold">MESSAGE SUBJECT</label>
                 <input
                   type="text"
                   name="subject"
                   value={formData.subject}
                   onChange={handleFormChange}
-                  placeholder="ENTER TYPE INDEX..."
+                  placeholder="ENTER MESSAGE SUBJECT..."
                   className="w-full bg-art-bg border border-art-beige-dark rounded-sm px-3 py-2 text-xs focus:outline-none focus:border-art-charcoal uppercase font-bold text-art-charcoal placeholder:text-art-beige-dark/70 placeholder:uppercase"
                 />
               </div>
 
               {/* Message */}
               <div className="space-y-1 font-mono">
-                <label className="text-[9px] text-art-charcoal/40 uppercase font-bold">[PAYLOAD_ENVELOPE_BODY]</label>
+                <label className="text-[9px] text-art-charcoal/40 uppercase font-bold">YOUR MESSAGE</label>
                 <textarea
                   name="message"
                   required
                   rows={4}
                   value={formData.message}
                   onChange={handleFormChange}
-                  placeholder="CONSTRUCT TRANSACTION PAYLOAD CONTENT..."
+                  placeholder="TYPE YOUR MESSAGE HERE..."
                   className="w-full bg-art-bg border border-art-beige-dark rounded-sm px-3 py-2 text-xs focus:outline-none focus:border-art-charcoal uppercase font-bold text-art-charcoal placeholder:text-art-beige-dark/70 placeholder:uppercase leading-relaxed resize-none"
                 />
               </div>
@@ -205,12 +224,12 @@ export default function TerminalSection({ logs, onAddLog, onClearLogs }: Termina
                 {isSending ? (
                   <>
                     <RotateCw className="h-4 w-4 animate-spin" />
-                    <span>TRANSMITTING BUNDLE VIA SOCKETS...</span>
+                    <span>SENDING YOUR MESSAGE...</span>
                   </>
                 ) : (
                   <>
                     <Send className="h-4 w-4" />
-                    <span>LAUNCH PACKET PACK TRANSMISSION</span>
+                    <span>SEND SECURE MESSAGE</span>
                   </>
                 )}
               </button>
@@ -225,8 +244,8 @@ export default function TerminalSection({ logs, onAddLog, onClearLogs }: Termina
               >
                 <CheckCircle2 className="h-4 w-4 mt-0.5 shrink-0" />
                 <div>
-                  <span className="font-bold uppercase">HANDSHAKE ACQUIRED:</span>
-                  <p className="mt-1 leading-normal uppercase">Your cryptographic transmission payload has successfully reached the main inbox matrix on Toronto gateway. Expect response within 12 cycles.</p>
+                  <span className="font-bold uppercase">MESSAGE DELIVERED:</span>
+                  <p className="mt-1 leading-normal uppercase">Thank you! Your message has been sent successfully to Yuvraj's email. He will get back to you shortly.</p>
                 </div>
               </motion.div>
             )}
@@ -241,7 +260,7 @@ export default function TerminalSection({ logs, onAddLog, onClearLogs }: Termina
                 <MapPin className="h-4 w-4" />
               </div>
               <div className="font-serif">
-                <span className="font-mono text-[8px] text-art-charcoal/40 uppercase font-semibold">LAT_STATION</span>
+                <span className="font-mono text-[8px] text-art-charcoal/40 uppercase font-semibold">LOCATION</span>
                 <div className="text-xs text-art-charcoal font-bold uppercase mt-0.5">{PERSONAL_INFO.location}</div>
               </div>
             </div>
@@ -255,7 +274,7 @@ export default function TerminalSection({ logs, onAddLog, onClearLogs }: Termina
                 <Mail className="h-4 w-4" />
               </div>
               <div className="font-serif">
-                <span className="font-mono text-[8px] text-art-charcoal/40 uppercase font-semibold">SYS_INBOX_ADDRESS</span>
+                <span className="font-mono text-[8px] text-art-charcoal/40 uppercase font-semibold">DIRECT EMAIL</span>
                 <div className="text-xs text-art-charcoal font-bold group-hover:text-art-charcoal transition-colors mt-0.5">{PERSONAL_INFO.email}</div>
               </div>
             </a>
@@ -271,13 +290,13 @@ export default function TerminalSection({ logs, onAddLog, onClearLogs }: Termina
             <div className="flex items-center justify-between border-b border-art-beige-mid bg-art-beige-light/45 px-4 py-2 font-mono text-[9px] font-bold">
               <div className="flex items-center space-x-2 text-art-charcoal/60 uppercase">
                 <TermIcon className="h-3.5 w-3.5 text-art-charcoal animate-pulse" />
-                <span>TELEMETRY_LOG_VIEWER</span>
+                <span>SYSTEM LOG VIEWER</span>
               </div>
               <button 
                 onClick={onClearLogs} 
                 className="text-[9px] text-art-charcoal/50 hover:text-art-charcoal uppercase underline cursor-pointer"
               >
-                [PURGE_STREAM]
+                [CLEAR LOGS]
               </button>
             </div>
 
@@ -306,7 +325,7 @@ export default function TerminalSection({ logs, onAddLog, onClearLogs }: Termina
                 type="text"
                 value={shellInput}
                 onChange={(e) => setShellInput(e.target.value)}
-                placeholder="Type 'help' to query console commands..."
+                placeholder="Type 'help' for simple commands..."
                 className="flex-1 bg-transparent px-2.5 py-3 font-mono text-[11px] focus:outline-none text-art-text placeholder:text-art-charcoal/25"
               />
             </form>

@@ -66,38 +66,78 @@ export default function NexusSection({ onAddLog }: NexusSectionProps) {
   };
 
   const handleDownloadManifest = () => {
-    onAddLog('info', 'PREPARING MANIFEST: Compiling system architect records...');
+    onAddLog('info', 'PREPARING CV: Compiling professional developer profile details...');
     
     setTimeout(() => {
       const manifestContent = `
-========================================
-SYSTEM ARCHITECT SYSTEM DEPLOYMENT SHEET
-========================================
-NAME: ${PERSONAL_INFO.name}
-TITLE: ${PERSONAL_INFO.title}
-NODE_VERSION: ${PERSONAL_INFO.version}
-STATUS: ${PERSONAL_INFO.status}
-LOCATION_STATION: ${PERSONAL_INFO.email}
+======================================================================
+                     YUVRAJ SINGH SIDHU
+======================================================================
+  Location: Chandigarh, India
+  Email:    yuvrajcodes11@gmail.com
+  LinkedIn: www.linkedin.com/in/yuvraj-singh-sidhu-86b961385
+----------------------------------------------------------------------
 
-CORE EXPERTISE:
-- Advanced Concurrency (Java & Spring Boot Core)
-- High-Performance Microservice Mesh Networks
-- Single Page Enterprise Modules (React & Tailwind CSS)
-- Fault-Tolerant Distributed Databases
+PROFESSIONAL SUMMARY:
+  Full-Stack Developer with 1.5 years of hands-on experience building
+  scalable web applications, social networking platforms, e-commerce
+  solutions, REST APIs, and database-driven systems. Experienced in
+  Java Spring Boot development, MERN Stack technologies, secure authentication
+  architectures, and Postgres/MySQL backend frameworks. Skilled at
+  designing, developing, and deploying complete software solutions from
+  concept to production.
 
-SIGNATURE HASH: RSA-4096_MD5:[a817fd9e90facb33e21cb32]
-========================================
-AUTOGRAPH PROTOCOL CONFIRMED.
+TECHNICAL SKILLS:
+  - Frontend:  HTML5, CSS3, JavaScript (ES6+), React.js, Next.js,
+               Tailwind CSS, Responsive Web Design
+  - Backend:   Java, Spring Boot, Core Java, REST API Development,
+               Node.js, Express.js
+  - Databases: Supabase, PostgreSQL, MySQL, MongoDB
+  - Developer Tools: Git, GitHub, Postman, Railway, Netlify, Vercel,
+               VS Code, IntelliJ IDEA
+
+PROJECTS:
+  1. MintyNex (Social Networking, Marketplace & Trading Ecosystem)
+     - Core Pokemon TCG platform integrating advanced social feed layers,
+       grid collection binders, geographic discovery, and secure trading.
+     - Crafted multi-tiered authentication schemas via Supabase and Spring Boot.
+     - Implemented real-time interactive notification systems and 1-to-1 chat corridors.
+     - Engineered trade escrow workflow rules with strict step transitions.
+     - Stack: React, Java, Spring Boot, Supabase, PostgreSQL, Railway
+
+  2. A King & A Queen (Premium Fashion E-Commerce Platform)
+     - Luxury fashion store featuring elegant custom lookbooks, fluid carts,
+       secure customer gateway workflows, and live store analytics.
+     - Stack: React.js, JavaScript, Java, Spring Boot, MySQL, Supabase, CSS3
+
+EXPERIENCE:
+  Freelance Full-Stack Developer | 2024 - Present
+  - Designed scalable backend rest architectures using Java & Spring Boot.
+  - Linked fast frontend interfaces to secure transactional database frameworks.
+  - Implemented secure authorization policies (Supabase Auth / Session logs).
+  - Managed smooth deploy integrations across Railway, Netlify, and Vercel.
+
+CORE COMPETENCIES:
+  - Full-Stack Development & Clean Architecture
+  - Relational & Non-relational Database Design
+  - Secured Microservices & Authentication Systems
+  - Performance Optimization & Code modularization
+
+LANGUAGES:
+  - English, Punjabi, Hindi
+======================================================================
+                    PORTFOLIO DOCUMENT GENERATION COMPLETE
+======================================================================
       `;
       
       const element = document.createElement("a");
       const file = new Blob([manifestContent], { type: 'text/plain' });
       element.href = URL.createObjectURL(file);
-      element.download = "YUVRAJ_SINGH_SIDHU_MANIFEST.txt";
+      element.download = "YUVRAJ_SINGH_SIDHU_RESUME.txt";
       document.body.appendChild(element);
       element.click();
       document.body.removeChild(element);
-      onAddLog('success', 'MANIFEST DEPLOYED: text/plain cryptographic profile downloaded successfully.');
+      onAddLog('success', 'PROFILE DOWNLOAD COMPLETE: Professional text resume downloaded successfully.');
     }, 1200);
   };
 
@@ -106,11 +146,11 @@ AUTOGRAPH PROTOCOL CONFIRMED.
       {/* Dynamic Grid Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-art-beige-mid pb-4">
         <div>
-          <span className="font-mono text-art-charcoal/65 text-[10px] uppercase tracking-widest font-bold">[CONSTELLATION HUB]</span>
-          <h2 className="font-serif text-3xl font-extrabold text-art-charcoal tracking-tight uppercase mt-1">Architecting Digital Realities</h2>
+          <span className="font-mono text-art-charcoal/65 text-[10px] uppercase tracking-widest font-bold">[SKILLS GALAXY]</span>
+          <h2 className="font-serif text-3xl font-extrabold text-art-charcoal tracking-tight uppercase mt-1">Skills & Technical Expertise</h2>
         </div>
         <div className="mt-2 md:mt-0 font-mono text-[11px] text-art-charcoal/50">
-          STATION: <span className="text-art-charcoal uppercase font-bold">{PERSONAL_INFO.location}</span>
+          LOCATION: <span className="text-art-charcoal uppercase font-bold">{PERSONAL_INFO.location}</span>
         </div>
       </div>
 
@@ -128,7 +168,7 @@ AUTOGRAPH PROTOCOL CONFIRMED.
                   <span className="h-2 w-2 rounded-full bg-art-beige-dark" />
                   <span className="h-2 w-2 rounded-full bg-art-beige-mid" />
                 </div>
-                <span className="font-mono text-[9px] text-art-charcoal/50 uppercase tracking-widest pl-2">SYSTEM_BIO_CORE // TERMINAL</span>
+                <span className="font-mono text-[9px] text-art-charcoal/50 uppercase tracking-widest pl-2">ABOUT_ME // PROFILE</span>
               </div>
               <div className="flex space-x-1 font-mono text-[10px]">
                 <button 
@@ -141,7 +181,7 @@ AUTOGRAPH PROTOCOL CONFIRMED.
                   onClick={() => setActiveTab2('stats')}
                   className={`px-3 py-1 rounded-sm text-[10px] transition-all cursor-pointer ${activeTab === 'stats' ? 'bg-art-charcoal text-art-bg font-semibold' : 'text-art-charcoal/50 hover:text-art-charcoal'}`}
                 >
-                  SYSTEM_METRICS
+                  SYSTEM_STATUS
                 </button>
               </div>
             </div>
@@ -157,14 +197,14 @@ AUTOGRAPH PROTOCOL CONFIRMED.
                       className="flex items-center space-x-2 px-4 py-2 text-xs font-semibold tracking-wider border border-art-charcoal bg-art-charcoal text-art-bg hover:bg-transparent hover:text-art-charcoal transition-colors duration-300"
                     >
                       <Download className="h-3.5 w-3.5" />
-                      <span>SIGN & DOWNLOAD MANIFEST</span>
+                      <span>DOWNLOAD RESUME</span>
                     </button>
                     <button 
-                      onClick={() => onAddLog('info', 'DIAGNOSTIC TRACE: Memory load is 12.8MB. Execution stack is dry.')}
+                      onClick={() => onAddLog('info', 'DIAGNOSTIC TRACE: CPU state stable. Core layers optimized.')}
                       className="flex items-center space-x-1.5 px-3 py-1.5 border border-art-beige-dark bg-art-beige-light/40 hover:bg-art-beige-light text-art-charcoal text-xs font-medium transition"
                     >
                       <TermIcon className="h-3.5 w-3.5 text-art-charcoal/70" />
-                      <span>LOG_INTEGRITY_CHECK</span>
+                      <span>RUN_DIAGNOSTIC_CHECK</span>
                     </button>
                   </div>
                 </div>
@@ -173,29 +213,29 @@ AUTOGRAPH PROTOCOL CONFIRMED.
                   <div className="flex items-center space-x-3 p-3 rounded-sm border border-art-beige-mid bg-art-beige-light/20">
                     <Server className="h-7 w-7 text-art-charcoal/60" />
                     <div>
-                      <div className="text-[9px] font-mono text-art-charcoal/40 uppercase">SERVER STATE</div>
-                      <div className="text-sm font-semibold text-art-charcoal">STANDALONE // AWS</div>
+                      <div className="text-[9px] font-mono text-art-charcoal/40 uppercase">DEPLOYMENT CLOUD</div>
+                      <div className="text-sm font-semibold text-art-charcoal">RAILWAY & NETLIFY</div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3 p-3 rounded-sm border border-art-beige-mid bg-art-beige-light/20">
                     <Zap className="h-7 w-7 text-art-charcoal/60" />
                     <div>
-                      <div className="text-[9px] font-mono text-art-charcoal/40 uppercase">THROUGHPUT ENGINE</div>
-                      <div className="text-sm font-semibold text-art-charcoal">V8 REACTOR</div>
+                      <div className="text-[9px] font-mono text-art-charcoal/40 uppercase">ENGINE GRAPHICS</div>
+                      <div className="text-sm font-semibold text-art-charcoal">V8 ENGINE</div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3 p-3 rounded-sm border border-art-beige-mid bg-art-beige-light/20">
                     <Activity className="h-7 w-7 text-art-charcoal/60" />
                     <div>
-                      <div className="text-[9px] font-mono text-art-charcoal/40 uppercase">LIVE CONCURRENCY</div>
-                      <div className="text-sm font-semibold text-art-charcoal">JAVA 21 THREADS</div>
+                      <div className="text-[9px] font-mono text-art-charcoal/40 uppercase">CONCURRENCY LEVEL</div>
+                      <div className="text-sm font-semibold text-art-charcoal">JAVA MULTITHREADS</div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3 p-3 rounded-sm border border-art-beige-mid bg-art-beige-light/20">
                     <Cpu className="h-7 w-7 text-art-charcoal/60" />
                     <div>
-                      <div className="text-[9px] font-mono text-art-charcoal/40 uppercase">PROCESS THREADS</div>
-                      <div className="text-sm font-semibold text-art-charcoal">128 SHARDS</div>
+                      <div className="text-[9px] font-mono text-art-charcoal/40 uppercase">ARCHITECTURE TYPE</div>
+                      <div className="text-sm font-semibold text-art-charcoal">MODULAR APPS</div>
                     </div>
                   </div>
                 </div>
@@ -205,7 +245,7 @@ AUTOGRAPH PROTOCOL CONFIRMED.
 
           {/* Orbit Constellation Galaxy Map */}
           <div className="rounded-sm border border-art-beige-mid bg-art-bg/85 p-6 flex flex-col items-center justify-center relative overflow-hidden shadow-sm">
-            <div className="absolute top-4 left-4 font-mono text-[9px] text-art-charcoal/50 uppercase tracking-widest">[TECH_CONSTELLATION_MODEL]</div>
+            <div className="absolute top-4 left-4 font-mono text-[9px] text-art-charcoal/50 uppercase tracking-widest">[INTERACTIVE_SKILLS_GRAPH]</div>
             
             {/* Center Node + Orbital Paths Display */}
             <div className="relative w-full aspect-square max-w-[320px] flex items-center justify-center my-6">
@@ -286,7 +326,7 @@ AUTOGRAPH PROTOCOL CONFIRMED.
 
             {/* Orbit Helper Tip */}
             <p className="font-mono text-[9px] text-art-charcoal/40 uppercase mt-2">
-              &gt; CLICK CONSTELLATION POINTS TO EXPLORE CAPABILITIES
+              &gt; CLICK ANY SKILL NODE TO REVEAL DETAILS
             </p>
           </div>
 
@@ -306,7 +346,7 @@ AUTOGRAPH PROTOCOL CONFIRMED.
                 className="rounded-sm border border-art-beige-mid bg-art-beige-light/35 p-5 space-y-4 relative shadow-sm font-serif"
               >
                 <div className="absolute top-4 right-4 bg-art-charcoal border border-art-charcoal px-2.5 py-0.5 rounded-sm text-[9px] font-mono text-art-bg">
-                  LEVEL: {selectedSkill.level}%
+                  EXPERTISE: {selectedSkill.level}%
                 </div>
                 
                 <div className="flex items-center space-x-3">
@@ -314,19 +354,19 @@ AUTOGRAPH PROTOCOL CONFIRMED.
                     {renderSkillIcon(selectedSkill.iconName)}
                   </div>
                   <div>
-                    <span className="font-mono text-[9px] text-art-charcoal/40 uppercase">CONSTELLATION COMPONENT</span>
+                    <span className="font-mono text-[9px] text-art-charcoal/40 uppercase">SKILL DETAILED REPORT</span>
                     <h4 className="font-serif text-[15px] font-bold text-art-charcoal uppercase tracking-wide">{selectedSkill.name}</h4>
                   </div>
                 </div>
 
                 <div className="space-y-2 font-mono text-[11px] border-t border-b border-art-beige-mid/45 py-2.5">
                   <div className="flex justify-between">
-                    <span className="text-art-charcoal/50">PROPAGATION FREQ</span>
+                    <span className="text-art-charcoal/50">ROTATION SPEED</span>
                     <span className="text-art-charcoal font-semibold">{Math.abs(selectedSkill.speed * 85).toFixed(2)} deg/tick</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-art-charcoal/50">CATEGORY TYPE</span>
-                    <span className="text-art-charcoal uppercase font-semibold">{selectedSkill.category} &middot; PIPELINE</span>
+                    <span className="text-art-charcoal/50">SERVICE CATEGORY</span>
+                    <span className="text-art-charcoal uppercase font-semibold">{selectedSkill.category} &middot; SECTOR</span>
                   </div>
                 </div>
 
@@ -355,7 +395,7 @@ AUTOGRAPH PROTOCOL CONFIRMED.
             <div className="flex items-center justify-between text-[11px] font-bold text-art-charcoal/70">
               <span className="flex items-center space-x-1.5">
                 <Activity className="h-4 w-4 text-art-charcoal animate-pulse" />
-                <span>TELEMETRY GRAPH // SPEED</span>
+                <span>RESPONSE TIME OVERVIEW</span>
               </span>
               <span className="text-[10px] text-art-charcoal font-bold">STABLE [12ms]</span>
             </div>
@@ -390,7 +430,7 @@ AUTOGRAPH PROTOCOL CONFIRMED.
               
               {/* CPU Load Indicator Tile */}
               <div className="border border-art-beige-mid bg-art-beige-light/20 p-3 rounded-sm">
-                <span className="text-[9px] text-art-charcoal/40 uppercase font-bold">SYS_LOAD</span>
+                <span className="text-[9px] text-art-charcoal/40 uppercase font-bold">CORE_LOAD</span>
                 <div className="flex items-end justify-between mt-1">
                   <span className="text-[15px] text-art-charcoal font-bold font-serif">{cpuLoad}%</span>
                   <div className="h-5 flex items-end space-x-1">
@@ -404,10 +444,10 @@ AUTOGRAPH PROTOCOL CONFIRMED.
 
               {/* Stability Node Tile */}
               <div className="border border-art-beige-mid bg-art-beige-light/20 p-3 rounded-sm">
-                <span className="text-[9px] text-art-charcoal/40 uppercase font-bold">STABILITY_LOCK</span>
+                <span className="text-[9px] text-art-charcoal/40 uppercase font-bold">SYS_SECURITY</span>
                 <div className="flex items-center space-x-2 mt-1.5">
                   <span className="h-2 w-2 rounded-full bg-art-charcoal" />
-                  <span className="text-[11px] text-art-charcoal font-bold uppercase">100% ENCRYPT</span>
+                  <span className="text-[11px] text-art-charcoal font-bold uppercase">100% SECURE</span>
                 </div>
               </div>
 

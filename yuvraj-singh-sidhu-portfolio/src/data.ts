@@ -2,36 +2,36 @@ import { Project, SkillNode, ServiceItem } from './types';
 
 export const PERSONAL_INFO = {
   name: 'Yuvraj Singh Sidhu',
-  title: 'System Architect // Java Developer',
+  title: 'Full-Stack Developer',
   status: 'Online',
   version: 'V4.0.2',
-  avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80', // Beautiful cyber avatar placeholder
+  avatarUrl: '', // Avatar image removed, fallback to clean elegant initials avatar
   github: 'https://github.com',
-  linkedin: 'https://linkedin.com',
-  email: 'contact@yuvrajsidhu.dev',
-  location: 'LAT_43.6532° N // LONG_79.3832° W', // Toronto coords
-  bio: 'A futuristic systems architect of full-scale applications, constructing bulletproof backends in Java and Spring Boot, wired into microservice mesh networks. I craft reactive, fluid client interfaces in modular React and Tailwind CSS, designing zero-latency digital systems with robust cryptography and architectural integrity.',
+  linkedin: 'https://www.linkedin.com/in/yuvraj-singh-sidhu-86b961385',
+  email: 'yuvrajcodes11@gmail.com',
+  location: 'Chandigarh, India',
+  bio: 'Freelance Full-Stack Developer with 1.5 years of hands-on experience building scalable web applications, social networking platforms, e-commerce solutions, REST APIs, and database-driven systems. Specialized in Java Spring Boot development, MERN Stack technologies, secure authentication architectures, and reliable database integrations.',
 };
 
 export const SKILL_NODES: SkillNode[] = [
-  { id: 'java', name: 'Java ERP', category: 'core', level: 98, angle: 0, radius: 100, speed: 0.015, iconName: 'Cpu' },
+  { id: 'java', name: 'Java Backend', category: 'core', level: 98, angle: 0, radius: 100, speed: 0.015, iconName: 'Cpu' },
   { id: 'spring', name: 'Spring Boot', category: 'backend', level: 96, angle: 90, radius: 130, speed: -0.01, iconName: 'Layers' },
-  { id: 'react', name: 'React SPA', category: 'frontend', level: 94, angle: 180, radius: 160, speed: 0.008, iconName: 'Code' },
-  { id: 'mysql', name: 'MySQL Node', category: 'database', level: 92, angle: 270, radius: 190, speed: -0.006, iconName: 'Database' },
-  { id: 'docker', name: 'Mesh Docker', category: 'core', level: 90, angle: 45, radius: 145, speed: 0.012, iconName: 'ShieldAlert' },
-  { id: 'aws', name: 'Cloud AWS', category: 'backend', level: 88, angle: 225, radius: 175, speed: -0.007, iconName: 'Cloud' },
+  { id: 'react', name: 'React & Next.js', category: 'frontend', level: 94, angle: 180, radius: 160, speed: 0.008, iconName: 'Code' },
+  { id: 'supabase', name: 'Supabase & Postgres', category: 'database', level: 92, angle: 270, radius: 190, speed: -0.006, iconName: 'Database' },
+  { id: 'auth', name: 'Auth & Security', category: 'core', level: 93, angle: 45, radius: 145, speed: 0.012, iconName: 'ShieldAlert' },
+  { id: 'platforms', name: 'Railway & Deployment', category: 'backend', level: 89, angle: 225, radius: 175, speed: -0.007, iconName: 'Cloud' },
 ];
 
 export const TECHNICAL_GRID = {
   computing: {
     score: '98%',
-    label: 'High-Concurrency Processing',
-    details: 'Multi-threaded queue architectures, memory leak optimization, complex algorithmic structures.',
+    label: 'High-Performance Coding',
+    details: 'Writing fast, reliable backend code, optimizing REST API endpoints using Java & Spring Boot, and managing transactional Postgres databases.',
   },
   design: {
     score: '92%',
-    label: 'Fluid UI Engine (UX/DX)',
-    details: 'Motion orchestration, design tokens, accessible components, ergonomic command interfaces.',
+    label: 'Beautiful & Interactive UIs',
+    details: 'Designing clean, modern user interfaces using React.js/Next.js and Tailwind CSS with smooth layout transitions and high-contrast usability.',
   }
 };
 
@@ -39,47 +39,51 @@ export const PROJECTS: Project[] = [
   {
     id: 'mintynex',
     title: 'MintyNex',
-    subtitle: 'High-Throughput Social Core Node',
-    description: 'An advanced, decentralized social mesh network node featuring peer-to-peer relaying and end-to-peer payload encryption. Optimized for zero-loss message transfers over unstable WebSocket channels.',
-    metaText: 'SYSTEM_LINK: MESH_RELAY_v2.0',
-    tags: ['Auth_Gateway', 'Mesh_Network', 'Reactive_Socket'],
-    techStack: ['Java 21', 'Spring Boot 3', 'WebSockets', 'React', 'Tailwind', 'Redis Cluster'],
-    imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80', // Cyber abstract digital network
+    subtitle: 'Pokemon TCG Social & Trading Ecosystem',
+    description: 'A full-scale, scalable social and marketplace platform designed for Pokémon TCG collectors. It integrates a rich social news feed, personal card virtual binder tracking, localized player discovery, and secure transactional escrow handlers.',
+    metaText: 'STATUS: IN DEVELOPMENT (PHASE 1 & 2)',
+    tags: ['Pokemon_TCG', 'Social_Feed', 'Binder_Collection', 'MintyMart_Marketplace', 'Trading_Escrow', 'Realtime_Chat'],
+    techStack: ['Java (Core + REST)', 'Spring Boot', 'Next.js', 'React.js', 'Supabase', 'PostgreSQL', 'Railway', 'Netlify'],
+    imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
     liveUrl: '#',
     githubUrl: '#',
     features: [
-      'Self-healing peer connections using lightweight heartbeat packets',
-      'Dynamic security-level handshake with automatic AES key rotation',
-      'Encrypted client-side sandbox allowing secure local message caching',
-      'Interactive visual dashboard showing server nodes topology and throughput'
+      'Built multi-layer authentication & accounts via secure Supabase PostgreSQL schemas',
+      'Engineered interactive Social Feed featuring posts, toggle likes, and threaded comments',
+      'Developed grid-based virtual Card Binder to register, track details, and filter cards by type',
+      'Designed localized player discovery locator matching collectors by city and country',
+      'Established real-time message exchange corridors complete with notifications and unread counts',
+      'Crafted transactional Escrow trade transitions logic (Proposed -> Accepted -> In Progress -> Completed)'
     ],
     stats: [
-      { label: 'Latency', value: '4.8ms', color: 'cyan' },
-      { label: 'Throughput', value: '24K req/s', color: 'green' },
-      { label: 'Uptime', value: '99.99%', color: 'amber' }
+      { label: 'Phase 1 State', value: 'Complete', color: 'green' },
+      { label: 'Phase 2 Trade', value: 'In Progress', color: 'cyan' },
+      { label: 'Core Platform', value: 'Spring/Supa', color: 'amber' }
     ]
   },
   {
     id: 'king-queen',
     title: 'A King & A Queen',
-    subtitle: 'Cryptographic Luxury Retail Pipeline',
-    description: 'A premium luxury fashion e-commerce architecture pairing high-art visuals with a high-integrity order pipeline. Outfitted with dynamic canvas animations, 3D assets rendering, and real-time currency conversion trackers.',
-    metaText: 'SYSTEM_LINK: SECURE_COMMERCE_v1.4',
-    tags: ['Metallic_Rendering', 'Live_Conversion', 'Encrypted_Checkout'],
-    techStack: ['React', 'Motion', 'Tailwind', 'Node.js', 'MySQL', 'Stripe Secure Core'],
-    imageUrl: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80', // Luxury aesthetic
+    subtitle: 'Luxury E-Commerce Shopping Experience',
+    description: 'A premium, modern fashion e-commerce shopping platform configured to provide supreme storefront browsing, order processing, secure auth, inventory management, and modular administrator controls.',
+    metaText: 'STATUS: COMPLETED',
+    tags: ['Fashion_Storefront', 'Product_Catalog', 'Shopping_Cart', 'Order_Processing', 'Payment_Gateway', 'Inventory_Mgmt'],
+    techStack: ['React.js', 'JavaScript', 'CSS3', 'Java', 'Spring Boot', 'MySQL', 'Supabase', 'Cloud UI'],
+    imageUrl: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80',
     liveUrl: '#',
     githubUrl: '#',
     features: [
-      'Interactive 3D-like metallic jewelry ring visualizer utilizing HTML Canvas',
-      'Zero-delay international exchange rate fetcher with currency fallback nodes',
-      'PCI-compliant RSA-4096 checkout payload signatures preventing MITM tampering',
-      'Ultra-dense administrative catalog bento with intuitive hover micro-animations'
+      'Implemented fully secure catalog search and custom category selectors',
+      'Built centralized cart system supporting multi-item additions and update calculations',
+      'Engineered order checkout workflows and payment merchant connection endpoints',
+      'Structured custom database schemas linking MySQL and Supabase for safe storage',
+      'Designed fully modular administrative control board for real-time inventory adjustments',
+      'Created sleek, fully responsive user experience supporting fluid viewport scales'
     ],
     stats: [
-      { label: 'Live Traffic', value: '1,420 Active', color: 'cyan' },
-      { label: 'Conversion', value: '+4.2%', color: 'green' },
-      { label: 'Checkout Time', value: '1.2s', color: 'amber' }
+      { label: 'Platform State', value: 'Completed', color: 'green' },
+      { label: 'Frontend Engine', value: 'React.js', color: 'cyan' },
+      { label: 'Backend Core', value: 'Spring Boot', color: 'amber' }
     ]
   }
 ];
@@ -87,44 +91,44 @@ export const PROJECTS: Project[] = [
 export const SERVICES: ServiceItem[] = [
   {
     id: 'fullstack',
-    code: 'Bento Node_01',
-    title: 'Full-Stack Integration Architecture',
-    description: 'Building end-to-end applications from the ground up. High-performance single page frontends connected via secure JSON Web Token bridges to reactive Spring-backed REST services.',
-    techStack: ['React', 'Spring Boot', 'TypeScript', 'Tailwind CSS'],
-    features: ['Modular state engines', 'Lazy asset pipelines', 'Interactive bento panels'],
+    code: 'Service_01',
+    title: 'Full-Stack Web Development',
+    description: 'Building complete web applications from start to finish. I connect fast and interactive user interfaces to powerful, secure backend web servers.',
+    techStack: ['React UI', 'Spring Boot', 'TypeScript', 'Tailwind CSS'],
+    features: ['Modern state managers', 'Optimized assets', 'Intuitive layouts'],
     loadIndex: 12
   },
   {
     id: 'apis',
-    code: 'Bento Node_02',
-    title: 'Distributed API Core Services',
-    description: 'Crafting robust microservice architectures. Developing secure REST, GraphQL, and RPC endpoints, standardizing protocols, rate-limiting layers, and encryption tunnels.',
-    techStack: ['Java 21', 'Spring Cloud', 'gRPC', 'OAuth 2.0'],
-    features: ['High-throughput validation', 'Circuit breaker resilience', 'Inter-service telemetry'],
+    code: 'Service_02',
+    title: 'Back-End API Development',
+    description: 'Creating robust and highly secure back-end APIs. I design fast communication channels between servers to ensure user data flows safely.',
+    techStack: ['Java Coding', 'Spring Boot', 'REST APIs', 'Secure Auth'],
+    features: ['High speed endpoints', 'Safe data transfer', 'Rate limit protection'],
     loadIndex: 25
   },
   {
     id: 'databases',
-    code: 'Bento Node_03',
-    title: 'Database Design & Clustering',
-    description: 'Relational schema designs and indexing strategies for sub-millisecond execution. Designing distributed clusters with read replicas, high-availability setups, and data sanitization.',
-    techStack: ['MySQL', 'PostgreSQL', 'Redis Cascade', 'Hibernate ORM'],
-    features: ['ACID transaction guarantee', 'Latency-optimized queries', 'Automated backup handshakes'],
+    code: 'Service_03',
+    title: 'Database Optimization',
+    description: 'Structuring database tables so your application loads instantly. I design databases to scale safely while ensuring regular secure backups.',
+    techStack: ['MySQL', 'PostgreSQL', 'Supabase', 'Database Integration'],
+    features: ['ACID transactions', 'Optimized queries', 'Automated safe backups'],
     loadIndex: 18
   },
   {
     id: 'machinement',
-    code: 'Bento Node_04',
-    title: 'Machine Intelligent Pipelines',
-    description: 'Integrating client-side and server-side machine intelligence models to create adaptive user interfaces, smart text search clusters, and analytical pipelines.',
-    techStack: ['Gemini Core API', 'TensorFlow.js', 'Vector DB Embeddings'],
-    features: ['Live intent classifications', 'Smart natural search', 'Reactive prompt matrices'],
+    code: 'Service_04',
+    title: 'Systems & Architecture Design',
+    description: 'Drafting scalable, clean backend code structures and security definitions. I write robust multi-module architectures optimized for client-grade production.',
+    techStack: ['System Design', 'Authentication System', 'Clean Architecture'],
+    features: ['Modular architectures', 'Authentication modules', 'Reliable deploy channels'],
     loadIndex: 40
   }
 ];
 
 export const INITIAL_LOGS_DATA = [
-  { timestamp: '14:24:02', type: 'system', message: 'CORE CLIENT BOOTING: Port 3000 mapped successfully.' },
-  { timestamp: '14:24:03', type: 'info', message: 'INTEGRITY TEST: Binary hash verification passed [RSA_4096_MD5].' },
-  { timestamp: '14:24:03', type: 'success', message: 'SYSTEM ONLINE: Ready to compile cybernetic interface components.' },
+  { timestamp: '14:24:02', type: 'system', message: 'Ready to receive contact queries.' },
+  { timestamp: '14:24:03', type: 'info', message: 'Email system ready for submissions to yuvrajcodes11@gmail.com.' },
+  { timestamp: '14:24:03', type: 'success', message: 'ALL SYSTEMS STABLE: Welcome to Yuvraj\'s Portfolio.' },
 ];

@@ -127,7 +127,7 @@ export default function TopNavBar({ activeTab, setActiveTab, onConnectClick }: T
                   }}
                   className="flex w-full items-center justify-center space-x-2 border border-art-charcoal bg-art-charcoal py-2 font-mono text-xs font-semibold text-art-bg uppercase tracking-widest hover:bg-transparent hover:text-art-charcoal transition-colors duration-300"
                 >
-                  <span>CONNECT TRANSMISSION</span>
+                  <span>GET IN TOUCH</span>
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </button>
               </div>

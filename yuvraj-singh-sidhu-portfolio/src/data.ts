@@ -1,12 +1,13 @@
 import { Project, SkillNode, ServiceItem } from './types';
+import profilePhoto from './assets/images/yuvraj_profile_photo.jpeg';
 
 export const PERSONAL_INFO = {
   name: 'Yuvraj Singh Sidhu',
   title: 'Full-Stack Developer',
   status: 'Online',
   version: 'V4.0.2',
-  avatarUrl: '', // Avatar image removed, fallback to clean elegant initials avatar
-  github: 'https://github.com',
+  avatarUrl: profilePhoto,
+  github: 'https://github.com/YuvrajCodes11/Yuvraj_Portfolio',
   linkedin: 'https://www.linkedin.com/in/yuvraj-singh-sidhu-86b961385',
   email: 'yuvrajcodes11@gmail.com',
   location: 'Chandigarh, India',
@@ -39,24 +40,29 @@ export const PROJECTS: Project[] = [
   {
     id: 'mintynex',
     title: 'MintyNex',
-    subtitle: 'Pokemon TCG Social & Trading Ecosystem',
-    description: 'A full-scale, scalable social and marketplace platform designed for Pokémon TCG collectors. It integrates a rich social news feed, personal card virtual binder tracking, localized player discovery, and secure transactional escrow handlers.',
+    subtitle: 'Large-Scale Social Networking, Marketplace, Trading & Community Platform',
+    description: 'A full-scale, enterprise-grade social networking and marketplace ecosystem. MintyNex combines a rich social feed, community management, secure friend system, in-app messaging, real-time notifications, a fully-featured marketplace, virtual collection management, and a multi-stage escrow trading system — all powered by a scalable Supabase + Spring Boot backend.\n\nThe frontend is currently built in HTML, CSS, and JavaScript and is actively being migrated to React.js / Next.js for improved scalability, component reusability, and long-term maintainability.',
     metaText: 'STATUS: IN DEVELOPMENT (PHASE 1 & 2)',
-    tags: ['Pokemon_TCG', 'Social_Feed', 'Binder_Collection', 'MintyMart_Marketplace', 'Trading_Escrow', 'Realtime_Chat'],
+    tags: ['User_Authentication', 'Social_Feed', 'Friend_System', 'Community_Features', 'Messaging', 'Notifications', 'Marketplace', 'Collection_Management', 'Trading_System', 'Admin_Dashboard', 'Supabase_Integration', 'Scalable_Architecture'],
     techStack: ['Java (Core + REST)', 'Spring Boot', 'Next.js', 'React.js', 'Supabase', 'PostgreSQL', 'Railway', 'Netlify'],
     imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
     liveUrl: '#',
-    githubUrl: '#',
+    githubUrl: 'https://github.com/YuvrajCodes11/Yuvraj_Portfolio',
     features: [
-      'Built multi-layer authentication & accounts via secure Supabase PostgreSQL schemas',
-      'Engineered interactive Social Feed featuring posts, toggle likes, and threaded comments',
-      'Developed grid-based virtual Card Binder to register, track details, and filter cards by type',
-      'Designed localized player discovery locator matching collectors by city and country',
-      'Established real-time message exchange corridors complete with notifications and unread counts',
-      'Crafted transactional Escrow trade transitions logic (Proposed -> Accepted -> In Progress -> Completed)'
+      'User Authentication & Profile system with role-based access control',
+      'Social Feed with posts, toggle likes, threaded comments, and real-time notifications',
+      'Friend System with request management and mutual connection discovery',
+      'Community Features for group creation, member management, and discussions',
+      'In-app Messaging corridors with unread counts and real-time delivery',
+      'Marketplace with product listings, search filters, and inventory management',
+      'Virtual Collection Management with grid-based card binders and type filtering',
+      'Multi-stage Escrow Trading System (Proposed → Accepted → In Progress → Completed)',
+      'Admin Dashboard for platform-level moderation and analytics',
+      'Supabase Integration with scalable PostgreSQL schemas and secure RLS policies',
+      'Frontend migration in progress: HTML/CSS/JS → React.js / Next.js',
     ],
     stats: [
-      { label: 'Phase 1 State', value: 'Complete', color: 'green' },
+      { label: 'Phase 1 Status', value: 'Complete', color: 'green' },
       { label: 'Phase 2 Trade', value: 'In Progress', color: 'cyan' },
       { label: 'Core Platform', value: 'Spring/Supa', color: 'amber' }
     ]
@@ -64,21 +70,23 @@ export const PROJECTS: Project[] = [
   {
     id: 'king-queen',
     title: 'A King & A Queen',
-    subtitle: 'Luxury E-Commerce Shopping Experience',
-    description: 'A premium, modern fashion e-commerce shopping platform configured to provide supreme storefront browsing, order processing, secure auth, inventory management, and modular administrator controls.',
-    metaText: 'STATUS: COMPLETED',
-    tags: ['Fashion_Storefront', 'Product_Catalog', 'Shopping_Cart', 'Order_Processing', 'Payment_Gateway', 'Inventory_Mgmt'],
+    subtitle: 'Premium Fashion E-Commerce Platform',
+    description: 'A production-ready, premium fashion e-commerce platform delivering a complete end-to-end shopping experience. From secure authentication and a dynamic product catalog to cart management, order processing, payment integration, and a fully-featured admin dashboard — this is a polished, client-grade retail solution built for real-world deployment.',
+    metaText: 'STATUS: COMPLETED — PRODUCTION READY',
+    tags: ['Authentication', 'Product_Catalog', 'Shopping_Cart', 'Checkout_Flow', 'Order_Management', 'Admin_Dashboard', 'Payment_Integration', 'Responsive_Design'],
     techStack: ['React.js', 'JavaScript', 'CSS3', 'Java', 'Spring Boot', 'MySQL', 'Supabase', 'Cloud UI'],
     imageUrl: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80',
     liveUrl: '#',
-    githubUrl: '#',
+    githubUrl: 'https://github.com/YuvrajCodes11/Yuvraj_Portfolio',
     features: [
-      'Implemented fully secure catalog search and custom category selectors',
-      'Built centralized cart system supporting multi-item additions and update calculations',
-      'Engineered order checkout workflows and payment merchant connection endpoints',
-      'Structured custom database schemas linking MySQL and Supabase for safe storage',
-      'Designed fully modular administrative control board for real-time inventory adjustments',
-      'Created sleek, fully responsive user experience supporting fluid viewport scales'
+      'Secure Authentication system with session management and role-based access',
+      'Dynamic Product Catalog with category filters, search, and sorting',
+      'Shopping Cart with multi-item management and real-time price calculations',
+      'Streamlined Checkout Flow with address management and order review',
+      'Order Management system with status tracking and history',
+      'Admin Dashboard for inventory control, order processing, and analytics',
+      'Payment Integration with merchant gateway and secure transaction endpoints',
+      'Fully Responsive Design optimized across all viewport sizes',
     ],
     stats: [
       { label: 'Platform State', value: 'Completed', color: 'green' },

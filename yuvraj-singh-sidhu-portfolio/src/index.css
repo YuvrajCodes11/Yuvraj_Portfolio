@@ -36,3 +36,49 @@ html, body {
 ::-webkit-scrollbar-thumb:hover {
   background: #BFBCB3;
 }
+
+/* === VISIBILITY & CONTRAST IMPROVEMENTS === */
+
+/* Stronger base text contrast */
+body {
+  color: #1A1A1A;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure section headings are always sharp */
+h1, h2, h3, h4, h5, h6 {
+  color: #1A1A1A;
+  font-weight: 700;
+}
+
+/* Improve paragraph readability */
+p {
+  color: #2A2A2A;
+}
+
+/* Ensure mono labels aren't too faint */
+.font-mono {
+  letter-spacing: 0.02em;
+}
+
+/* Button baseline - ensure they're always visible */
+button {
+  cursor: pointer;
+}
+
+/* Selected/active state extra boost */
+[data-active="true"] {
+  color: #1A1A1A !important;
+  font-weight: 700;
+}
+
+/* Improve list item readability */
+li {
+  color: #2A2A2A;
+}
+
+/* Tag / badge text should be crisp */
+span.font-mono {
+  -webkit-font-smoothing: antialiased;
+}

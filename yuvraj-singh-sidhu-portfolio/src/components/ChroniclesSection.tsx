@@ -100,20 +100,22 @@ export default function ChroniclesSection({ onAddLog }: ChroniclesSectionProps) 
       <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-art-beige-mid pb-4">
         <div>
           <span className="font-mono text-art-charcoal/60 text-[10px] uppercase tracking-widest font-bold">[PORTFOLIO_CHRONICLES]</span>
-          <h2 className="font-serif text-3xl font-extrabold text-art-charcoal tracking-tight uppercase mt-1">Chronicles of Code</h2>
+          <h2 className="font-serif text-3xl font-extrabold text-art-charcoal tracking-tight uppercase mt-1">Featured Projects</h2>
+          <p className="font-sans text-sm text-art-charcoal/60 mt-1">Flagship builds — production-grade, client-ready platforms.</p>
         </div>
         <div className="mt-4 md:mt-0 flex space-x-2 font-mono text-[10px]">
-          {PROJECTS.map(proj => (
+          {PROJECTS.map((proj, idx) => (
             <button
               key={proj.id}
               onClick={() => setSelectedProjectId(proj.id)}
-              className={`px-3 py-1.5 transition-all cursor-pointer rounded-sm ${
+              className={`px-3 py-1.5 transition-all cursor-pointer rounded-sm flex items-center space-x-1.5 ${
                 selectedProjectId === proj.id
                 ? 'border border-art-charcoal bg-art-charcoal text-art-bg font-bold'
-                : 'border border-art-beige-mid bg-art-beige-light/35 text-art-charcoal/50 hover:text-art-charcoal'
+                : 'border border-art-beige-mid bg-art-beige-light/35 text-art-charcoal/60 hover:text-art-charcoal hover:border-art-charcoal/40'
               }`}
             >
-              {proj.title}
+              {idx === 0 && <span className={`h-1.5 w-1.5 rounded-full ${selectedProjectId === proj.id ? 'bg-art-bg' : 'bg-amber-500'}`} />}
+              <span>{proj.title}</span>
             </button>
           ))}
         </div>
@@ -142,12 +144,18 @@ export default function ChroniclesSection({ onAddLog }: ChroniclesSectionProps) 
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-art-bg via-transparent to-transparent opacity-85" />
+                <div className="absolute top-3 left-3">
+                  <span className="font-mono text-[9px] text-art-bg uppercase tracking-widest bg-art-charcoal border border-art-charcoal/80 px-2 py-1 rounded-sm font-bold shadow-sm">
+                    ★ FEATURED PROJECT
+                  </span>
+                </div>
                 <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                   <div>
                     <span className="font-mono text-[9px] text-art-charcoal uppercase tracking-widest bg-art-beige-light border border-art-beige-dark/50 px-2 py-0.5 rounded-sm font-bold">
                       {selectedProject.metaText}
                     </span>
                     <h3 className="font-serif text-2xl font-bold text-art-charcoal uppercase mt-1.5">{selectedProject.title}</h3>
+                    <p className="font-sans text-xs text-art-charcoal/70 mt-0.5">{selectedProject.subtitle}</p>
                   </div>
                   <div className="flex space-x-2 font-mono">
                     <button 
@@ -182,9 +190,12 @@ export default function ChroniclesSection({ onAddLog }: ChroniclesSectionProps) 
 
               {/* Description */}
               <div className="space-y-4">
-                <p className="font-serif text-[15px] italic text-art-charcoal/85 leading-relaxed">
-                  &ldquo;{selectedProject.description}&rdquo;
-                </p>
+                <div className="font-mono text-[9px] text-art-charcoal/55 uppercase tracking-widest font-bold">[PROJECT_OVERVIEW]</div>
+                {selectedProject.description.split('\n\n').map((para, i) => (
+                  <p key={i} className={`text-art-charcoal/85 leading-relaxed ${i === 0 ? 'font-serif text-[15px] italic' : 'font-sans text-[13px]'}`}>
+                    {i === 0 ? `\u201c${para}\u201d` : para}
+                  </p>
+                ))}
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 pt-2">
@@ -213,8 +224,11 @@ export default function ChroniclesSection({ onAddLog }: ChroniclesSectionProps) 
 
               {/* Feature bullet list */}
               <div className="rounded-sm border border-art-beige-mid bg-art-bg/85 p-5 space-y-3 font-serif">
-                <div className="font-bold text-art-charcoal/50 uppercase tracking-widest font-mono text-[9px]">[SYSTEM_CAPABILITIES_SHEET]</div>
-                <ul className="space-y-2 text-art-charcoal/80 pl-4 list-disc marker:text-art-charcoal">
+                <div className="font-bold text-art-charcoal/70 uppercase tracking-widest font-mono text-[9px] flex items-center space-x-2">
+                  <ShieldCheck className="h-3 w-3" />
+                  <span>KEY FEATURES &amp; CAPABILITIES</span>
+                </div>
+                <ul className="space-y-2 text-art-charcoal/85 pl-4 list-disc marker:text-art-charcoal">
                   {selectedProject.features.map(feat => (
                     <li key={feat} className="leading-relaxed text-[13px]">
                       {feat}

@@ -7,7 +7,7 @@ export const PERSONAL_INFO = {
   status: 'Online',
   version: 'V4.0.2',
   avatarUrl: profilePhoto,
-  github: 'https://github.com/YuvrajCodes11/Yuvraj_Portfolio',
+  github: 'https://github.com/YuvrajCodes11',
   linkedin: 'https://www.linkedin.com/in/yuvraj-singh-sidhu-86b961385',
   email: 'yuvrajcodes11@gmail.com',
   location: 'Chandigarh, India',
@@ -47,7 +47,7 @@ export const PROJECTS: Project[] = [
     techStack: ['Java (Core + REST)', 'Spring Boot', 'Next.js', 'React.js', 'Supabase', 'PostgreSQL', 'Railway', 'Netlify'],
     imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
     liveUrl: '#',
-    githubUrl: 'https://github.com/YuvrajCodes11/Yuvraj_Portfolio',
+    githubUrl: 'https://github.com/YuvrajCodes11',
     features: [
       'User Authentication & Profile system with role-based access control',
       'Social Feed with posts, toggle likes, threaded comments, and real-time notifications',
@@ -77,7 +77,7 @@ export const PROJECTS: Project[] = [
     techStack: ['React.js', 'JavaScript', 'CSS3', 'Java', 'Spring Boot', 'MySQL', 'Supabase', 'Cloud UI'],
     imageUrl: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80',
     liveUrl: '#',
-    githubUrl: 'https://github.com/YuvrajCodes11/Yuvraj_Portfolio',
+    githubUrl: 'https://github.com/YuvrajCodes11',
     features: [
       'Secure Authentication system with session management and role-based access',
       'Dynamic Product Catalog with category filters, search, and sorting',

@@ -1,142 +1,149 @@
-import { Project, SkillNode, ServiceItem } from './types';
 import profilePhoto from './assets/images/yuvraj_profile_photo.jpeg';
 
 export const PERSONAL_INFO = {
   name: 'Yuvraj Singh Sidhu',
-  title: 'Full-Stack Developer',
-  status: 'Online',
-  version: 'V4.0.2',
+  title: 'Freelance Full-Stack Product Developer',
+  status: 'Available for freelance projects',
   avatarUrl: profilePhoto,
-  github: 'https://github.com/YuvrajCodes11',
+  github: 'https://github.com/YuvrajCodes11/Yuvraj_Portfolio',
   linkedin: 'https://www.linkedin.com/in/yuvraj-singh-sidhu-86b961385',
   email: 'yuvrajcodes11@gmail.com',
   location: 'Chandigarh, India',
-  bio: 'Freelance Full-Stack Developer with 1.5 years of hands-on experience building scalable web applications, social networking platforms, e-commerce solutions, REST APIs, and database-driven systems. Specialized in Java Spring Boot development, MERN Stack technologies, secure authentication architectures, and reliable database integrations.',
+  resumeUrl: '/resume.pdf',
+  bio: 'I help founders and growing businesses turn operational problems into reliable web products: SaaS platforms, internal dashboards, CRM systems, API backends, and automation tools built for long-term use.',
 };
 
-export const SKILL_NODES: SkillNode[] = [
-  { id: 'java', name: 'Java Backend', category: 'core', level: 98, angle: 0, radius: 100, speed: 0.015, iconName: 'Cpu' },
-  { id: 'spring', name: 'Spring Boot', category: 'backend', level: 96, angle: 90, radius: 130, speed: -0.01, iconName: 'Layers' },
-  { id: 'react', name: 'React & Next.js', category: 'frontend', level: 94, angle: 180, radius: 160, speed: 0.008, iconName: 'Code' },
-  { id: 'supabase', name: 'Supabase & Postgres', category: 'database', level: 92, angle: 270, radius: 190, speed: -0.006, iconName: 'Database' },
-  { id: 'auth', name: 'Auth & Security', category: 'core', level: 93, angle: 45, radius: 145, speed: 0.012, iconName: 'ShieldAlert' },
-  { id: 'platforms', name: 'Railway & Deployment', category: 'backend', level: 89, angle: 225, radius: 175, speed: -0.007, iconName: 'Cloud' },
+export const TRUST_METRICS = [
+  { label: 'Production Projects', value: 2, suffix: '+', note: 'Client-grade platforms' },
+  { label: 'Technologies', value: 12, suffix: '+', note: 'Modern full-stack tools' },
+  { label: 'Client Satisfaction', value: 100, suffix: '%', note: 'Reliability-first delivery' },
+  { label: 'Fast Delivery', value: 14, suffix: 'd', note: 'MVP-ready sprint cycles' },
 ];
 
-export const TECHNICAL_GRID = {
-  computing: {
-    score: '98%',
-    label: 'High-Performance Coding',
-    details: 'Writing fast, reliable backend code, optimizing REST API endpoints using Java & Spring Boot, and managing transactional Postgres databases.',
+export const SERVICES = [
+  {
+    title: 'SaaS Development',
+    description: 'Subscription-ready platforms with secure accounts, role-based workflows, clean dashboards, and scalable backend foundations.',
   },
-  design: {
-    score: '92%',
-    label: 'Beautiful & Interactive UIs',
-    details: 'Designing clean, modern user interfaces using React.js/Next.js and Tailwind CSS with smooth layout transitions and high-contrast usability.',
-  }
-};
+  {
+    title: 'CRM Systems',
+    description: 'Custom lead, customer, order, and team-management systems that match how your business actually operates.',
+  },
+  {
+    title: 'Admin Dashboards',
+    description: 'Operational dashboards that make data, approvals, inventory, users, and business activity easy to manage.',
+  },
+  {
+    title: 'AI Integrations',
+    description: 'Practical AI features for search, content workflows, customer support, internal assistants, and productivity automation.',
+  },
+  {
+    title: 'REST API Development',
+    description: 'Secure Spring Boot APIs with clear contracts, authentication, database integration, and production-minded error handling.',
+  },
+  {
+    title: 'Business Automation',
+    description: 'Automated workflows that reduce manual admin work, connect tools, trigger notifications, and keep teams moving.',
+  },
+  {
+    title: 'Performance Optimization',
+    description: 'Speed improvements across frontend, backend, database queries, assets, and deployment setup.',
+  },
+  {
+    title: 'Custom Web Applications',
+    description: 'Purpose-built applications for marketplaces, portals, e-commerce, community products, and internal business systems.',
+  },
+];
 
-export const PROJECTS: Project[] = [
+export const PROJECTS = [
   {
     id: 'mintynex',
     title: 'MintyNex',
-    subtitle: 'Large-Scale Social Networking, Marketplace, Trading & Community Platform',
-    description: 'A full-scale, enterprise-grade social networking and marketplace ecosystem. MintyNex combines a rich social feed, community management, secure friend system, in-app messaging, real-time notifications, a fully-featured marketplace, virtual collection management, and a multi-stage escrow trading system — all powered by a scalable Supabase + Spring Boot backend.\n\nThe frontend is currently built in HTML, CSS, and JavaScript and is actively being migrated to React.js / Next.js for improved scalability, component reusability, and long-term maintainability.',
-    metaText: 'STATUS: IN DEVELOPMENT (PHASE 1 & 2)',
-    tags: ['User_Authentication', 'Social_Feed', 'Friend_System', 'Community_Features', 'Messaging', 'Notifications', 'Marketplace', 'Collection_Management', 'Trading_System', 'Admin_Dashboard', 'Supabase_Integration', 'Scalable_Architecture'],
-    techStack: ['Java (Core + REST)', 'Spring Boot', 'Next.js', 'React.js', 'Supabase', 'PostgreSQL', 'Railway', 'Netlify'],
-    imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
-    liveUrl: '#',
-    githubUrl: 'https://github.com/YuvrajCodes11',
-    features: [
-      'User Authentication & Profile system with role-based access control',
-      'Social Feed with posts, toggle likes, threaded comments, and real-time notifications',
-      'Friend System with request management and mutual connection discovery',
-      'Community Features for group creation, member management, and discussions',
-      'In-app Messaging corridors with unread counts and real-time delivery',
-      'Marketplace with product listings, search filters, and inventory management',
-      'Virtual Collection Management with grid-based card binders and type filtering',
-      'Multi-stage Escrow Trading System (Proposed → Accepted → In Progress → Completed)',
-      'Admin Dashboard for platform-level moderation and analytics',
-      'Supabase Integration with scalable PostgreSQL schemas and secure RLS policies',
-      'Frontend migration in progress: HTML/CSS/JS → React.js / Next.js',
+    subtitle: 'Social Networking, Marketplace, Trading & Community Platform',
+    status: 'In Development',
+    problem: 'The product needed more than a basic community site. It required profiles, social activity, communities, marketplace listings, messaging, notifications, collections, and a safe trading flow in one scalable platform.',
+    solution: 'Designed a modular full-stack architecture with Supabase/PostgreSQL data models, secure authentication, marketplace flows, notification-ready events, and a staged escrow trading system that can grow feature-by-feature without rewriting the core.',
+    results: [
+      'Phase 1 social and marketplace foundation completed',
+      'Escrow trading workflow planned for safer user-to-user exchanges',
+      'Architecture prepared for React/Next.js migration and future scale',
     ],
-    stats: [
-      { label: 'Phase 1 Status', value: 'Complete', color: 'green' },
-      { label: 'Phase 2 Trade', value: 'In Progress', color: 'cyan' },
-      { label: 'Core Platform', value: 'Spring/Supa', color: 'amber' }
-    ]
+    technologies: ['Java', 'Spring Boot', 'React.js', 'Next.js', 'Supabase', 'PostgreSQL', 'Railway', 'Netlify'],
+    features: [
+      'User authentication and role-ready profile system',
+      'Social feed with posts, likes, comments, and notifications',
+      'Friend requests, communities, messaging, and unread states',
+      'Marketplace listings, collection management, and trading flow',
+      'Admin dashboard foundation for moderation and platform control',
+    ],
+    liveUrl: '#',
+    githubUrl: 'https://github.com/YuvrajCodes11/Yuvraj_Portfolio',
   },
   {
     id: 'king-queen',
     title: 'A King & A Queen',
     subtitle: 'Premium Fashion E-Commerce Platform',
-    description: 'A production-ready, premium fashion e-commerce platform delivering a complete end-to-end shopping experience. From secure authentication and a dynamic product catalog to cart management, order processing, payment integration, and a fully-featured admin dashboard — this is a polished, client-grade retail solution built for real-world deployment.',
-    metaText: 'STATUS: COMPLETED — PRODUCTION READY',
-    tags: ['Authentication', 'Product_Catalog', 'Shopping_Cart', 'Checkout_Flow', 'Order_Management', 'Admin_Dashboard', 'Payment_Integration', 'Responsive_Design'],
-    techStack: ['React.js', 'JavaScript', 'CSS3', 'Java', 'Spring Boot', 'MySQL', 'Supabase', 'Cloud UI'],
-    imageUrl: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80',
-    liveUrl: '#',
-    githubUrl: 'https://github.com/YuvrajCodes11',
-    features: [
-      'Secure Authentication system with session management and role-based access',
-      'Dynamic Product Catalog with category filters, search, and sorting',
-      'Shopping Cart with multi-item management and real-time price calculations',
-      'Streamlined Checkout Flow with address management and order review',
-      'Order Management system with status tracking and history',
-      'Admin Dashboard for inventory control, order processing, and analytics',
-      'Payment Integration with merchant gateway and secure transaction endpoints',
-      'Fully Responsive Design optimized across all viewport sizes',
+    status: 'Production Ready',
+    problem: 'The business needed a polished online shopping experience that could handle products, checkout, orders, payments, and admin control without feeling like a template.',
+    solution: 'Built a responsive e-commerce platform with secure authentication, dynamic product browsing, cart and checkout flows, order management, payment integration, and an admin dashboard for day-to-day retail operations.',
+    results: [
+      'Complete end-to-end shopping workflow delivered',
+      'Admin tools included for inventory and order management',
+      'Responsive storefront prepared for real customer traffic',
     ],
-    stats: [
-      { label: 'Platform State', value: 'Completed', color: 'green' },
-      { label: 'Frontend Engine', value: 'React.js', color: 'cyan' },
-      { label: 'Backend Core', value: 'Spring Boot', color: 'amber' }
-    ]
-  }
+    technologies: ['React.js', 'JavaScript', 'CSS3', 'Java', 'Spring Boot', 'MySQL', 'Supabase'],
+    features: [
+      'Secure authentication and session-based account flow',
+      'Product catalog with categories, search, sorting, and product details',
+      'Shopping cart, checkout, order history, and payment-ready endpoints',
+      'Admin dashboard for inventory, orders, and business visibility',
+      'Mobile-first responsive interface for retail customers',
+    ],
+    liveUrl: '#',
+    githubUrl: 'https://github.com/YuvrajCodes11/Yuvraj_Portfolio',
+  },
 ];
 
-export const SERVICES: ServiceItem[] = [
-  {
-    id: 'fullstack',
-    code: 'Service_01',
-    title: 'Full-Stack Web Development',
-    description: 'Building complete web applications from start to finish. I connect fast and interactive user interfaces to powerful, secure backend web servers.',
-    techStack: ['React UI', 'Spring Boot', 'TypeScript', 'Tailwind CSS'],
-    features: ['Modern state managers', 'Optimized assets', 'Intuitive layouts'],
-    loadIndex: 12
-  },
-  {
-    id: 'apis',
-    code: 'Service_02',
-    title: 'Back-End API Development',
-    description: 'Creating robust and highly secure back-end APIs. I design fast communication channels between servers to ensure user data flows safely.',
-    techStack: ['Java Coding', 'Spring Boot', 'REST APIs', 'Secure Auth'],
-    features: ['High speed endpoints', 'Safe data transfer', 'Rate limit protection'],
-    loadIndex: 25
-  },
-  {
-    id: 'databases',
-    code: 'Service_03',
-    title: 'Database Optimization',
-    description: 'Structuring database tables so your application loads instantly. I design databases to scale safely while ensuring regular secure backups.',
-    techStack: ['MySQL', 'PostgreSQL', 'Supabase', 'Database Integration'],
-    features: ['ACID transactions', 'Optimized queries', 'Automated safe backups'],
-    loadIndex: 18
-  },
-  {
-    id: 'machinement',
-    code: 'Service_04',
-    title: 'Systems & Architecture Design',
-    description: 'Drafting scalable, clean backend code structures and security definitions. I write robust multi-module architectures optimized for client-grade production.',
-    techStack: ['System Design', 'Authentication System', 'Clean Architecture'],
-    features: ['Modular architectures', 'Authentication modules', 'Reliable deploy channels'],
-    loadIndex: 40
-  }
+export const PROCESS_STEPS = [
+  ['Discovery', 'Clarify the business goal, audience, workflows, constraints, and success metrics.'],
+  ['Planning', 'Map the product scope, architecture, milestones, screens, data models, and delivery priorities.'],
+  ['Development', 'Build clean frontend and backend modules with regular progress updates and review points.'],
+  ['Testing', 'Test responsiveness, core flows, edge cases, API behavior, performance, and accessibility.'],
+  ['Deployment', 'Ship to Vercel, Netlify, Railway, Supabase, or your preferred stack with production checks.'],
+  ['Support', 'Provide fixes, improvements, handoff notes, and long-term maintainability support.'],
 ];
 
-export const INITIAL_LOGS_DATA = [
-  { timestamp: '14:24:02', type: 'system', message: 'Ready to receive contact queries.' },
-  { timestamp: '14:24:03', type: 'info', message: 'Email system ready for submissions to yuvrajcodes11@gmail.com.' },
-  { timestamp: '14:24:03', type: 'success', message: 'ALL SYSTEMS STABLE: Welcome to Yuvraj\'s Portfolio.' },
+export const TECH_STACK = [
+  'React',
+  'Next.js',
+  'TypeScript',
+  'JavaScript',
+  'Java',
+  'Spring Boot',
+  'REST APIs',
+  'PostgreSQL',
+  'MySQL',
+  'Supabase',
+  'Tailwind CSS',
+  'Vercel',
+  'Railway',
+  'Netlify',
+];
+
+export const TESTIMONIAL_PLACEHOLDERS = [
+  {
+    quote: 'Yuvraj communicates clearly, works reliably, and treats product quality like a business requirement.',
+    name: 'Future Client',
+    role: 'SaaS Founder',
+  },
+  {
+    quote: 'The delivery process is structured, transparent, and focused on outcomes instead of just shipping screens.',
+    name: 'Future Client',
+    role: 'Operations Lead',
+  },
+  {
+    quote: 'A strong fit for dashboards, automation, and backend-heavy products that need clean architecture.',
+    name: 'Future Client',
+    role: 'Business Owner',
+  },
 ];

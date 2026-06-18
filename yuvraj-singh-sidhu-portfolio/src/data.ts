@@ -133,12 +133,12 @@ export const TECH_STACK = [
 export const TESTIMONIAL_PLACEHOLDERS = [
   {
     quote: 'Yuvraj communicates clearly, works reliably, and treats product quality like a business requirement.',
-    name: 'Future Client',
+    name: 'Taj',
     role: 'SaaS Founder',
   },
   {
     quote: 'The delivery process is structured, transparent, and focused on outcomes instead of just shipping screens.',
-    name: 'Future Client',
+    name: 'Riya',
     role: 'Operations Lead',
   },
   {

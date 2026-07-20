@@ -5,7 +5,7 @@ export const PERSONAL_INFO = {
   title: 'Freelance Full-Stack Product Developer',
   status: 'Available for freelance projects',
   avatarUrl: profilePhoto,
-  github: 'https://github.com/YuvrajCodes11/Yuvraj_Portfolio',
+  github: 'https://github.com/YuvrajCodes11',
   linkedin: 'https://www.linkedin.com/in/yuvraj-singh-sidhu-86b961385',
   email: 'yuvrajcodes11@gmail.com',
   location: 'Chandigarh, India',
@@ -14,7 +14,7 @@ export const PERSONAL_INFO = {
 };
 
 export const TRUST_METRICS = [
-  { label: 'Production Projects', value: 2, suffix: '+', note: 'Client-grade platforms' },
+  { label: 'Production Projects', value: 4, suffix: '+', note: 'Client-grade platforms' },
   { label: 'Technologies', value: 12, suffix: '+', note: 'Modern full-stack tools' },
   { label: 'Client Satisfaction', value: 100, suffix: '%', note: 'Reliability-first delivery' },
   { label: 'Fast Delivery', value: 14, suffix: 'd', note: 'MVP-ready sprint cycles' },
@@ -77,7 +77,7 @@ export const PROJECTS = [
       'Admin dashboard foundation for moderation and platform control',
     ],
     liveUrl: '#',
-    githubUrl: 'https://github.com/YuvrajCodes11/Yuvraj_Portfolio',
+    githubUrl: 'https://github.com/YuvrajCodes11',
   },
   {
     id: 'king-queen',
@@ -100,7 +100,53 @@ export const PROJECTS = [
       'Mobile-first responsive interface for retail customers',
     ],
     liveUrl: '#',
-    githubUrl: 'https://github.com/YuvrajCodes11/Yuvraj_Portfolio',
+    githubUrl: 'https://github.com/YuvrajCodes11',
+  },
+  {
+    id: 'blue',
+    title: 'BLUE',
+    subtitle: 'Modern Brand Website & Business Presence',
+    status: 'Completed',
+    problem: 'The brand needed a clean digital presence that could explain the offer clearly, build trust quickly, and give visitors a professional first impression across desktop and mobile devices.',
+    solution: 'Created a responsive business website structure with conversion-focused sections, polished visual hierarchy, clear calls to action, and a maintainable frontend foundation ready for future content and service expansion.',
+    results: [
+      'Professional brand presentation prepared for client-facing traffic',
+      'Responsive layout built for mobile and desktop visitors',
+      'Clear sections created to support inquiries and future updates',
+    ],
+    technologies: ['React.js', 'JavaScript', 'CSS3', 'Responsive Design', 'Vercel'],
+    features: [
+      'Modern homepage with strong business positioning',
+      'Responsive layout optimized for multiple screen sizes',
+      'Service-focused content sections for clearer visitor understanding',
+      'Fast-loading frontend structure for better user experience',
+      'Deployment-ready setup for quick publishing and iteration',
+    ],
+    liveUrl: '#',
+    githubUrl: 'https://github.com/YuvrajCodes11',
+  },
+  {
+    id: 'ac-management',
+    title: 'AC Management App',
+    subtitle: 'Service Operations & Customer Management System',
+    status: 'Completed',
+    problem: 'AC service teams need a simple way to manage customers, service requests, technician activity, job status, and follow-ups without depending on scattered calls, notes, and manual tracking.',
+    solution: 'Built a business management app concept focused on organizing customer records, service bookings, job progress, admin visibility, and operational workflows from one structured dashboard.',
+    results: [
+      'Service workflow organized into a clearer management system',
+      'Admin dashboard planned for faster status tracking and decisions',
+      'Foundation prepared for future booking, technician, and reporting features',
+    ],
+    technologies: ['React.js', 'JavaScript', 'Java', 'Spring Boot', 'REST APIs', 'Database Design'],
+    features: [
+      'Customer and service-request management structure',
+      'Admin dashboard for job status and operational overview',
+      'Technician assignment and progress tracking foundation',
+      'REST API-ready architecture for scalable business workflows',
+      'Responsive interface for office and field-service usage',
+    ],
+    liveUrl: '#',
+    githubUrl: 'https://github.com/YuvrajCodes11',
   },
 ];
 
@@ -133,17 +179,17 @@ export const TECH_STACK = [
 export const TESTIMONIAL_PLACEHOLDERS = [
   {
     quote: 'Yuvraj communicates clearly, works reliably, and treats product quality like a business requirement.',
-    name: 'Taj',
+    name: 'Riya',
     role: 'SaaS Founder',
   },
   {
     quote: 'The delivery process is structured, transparent, and focused on outcomes instead of just shipping screens.',
-    name: 'Riya',
+    name: 'Taj',
     role: 'Operations Lead',
   },
   {
     quote: 'A strong fit for dashboards, automation, and backend-heavy products that need clean architecture.',
-    name: 'Future Client',
+    name: 'Hajji',
     role: 'Business Owner',
   },
 ];

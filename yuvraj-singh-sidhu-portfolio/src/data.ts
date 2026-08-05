@@ -57,8 +57,8 @@ export const SERVICES = [
 
 export const PROJECTS = [
   {
-    id: 'mintynex',
-    title: 'MintyNex',
+    id: 'pokevault',
+    title: 'PokeVault',
     subtitle: 'Global TCG Trading Cards & Collector Community Platform',
     status: 'Production Ready',
     problem: 'Trading card collectors needed a trusted, dedicated platform to showcase digital binders, connect with local/global trainers, and arrange verified face-to-face card trades without high marketplace fees or shipping scam risks.',
@@ -73,7 +73,7 @@ export const PROJECTS = [
       'Digital binder to showcase TCG collection with PSA/BGS grades and market pricing',
       'In-person safe trading engine with structured proposals and zero shipping risk',
       'Live community feed for trainers to share pack pulls, slabs, and trade updates',
-      'MintyMart marketplace with 3,400+ listings filtered by grade, set, and region',
+      'CardVault marketplace with 3,400+ listings filtered by grade, set, and region',
       'Trainer ranking system (Rookie to Elite) with star rep ratings and verified badges',
     ],
     liveUrl: 'https://minty-nex-frontend.vercel.app/',
@@ -145,7 +145,7 @@ export const PROJECTS = [
       'Admin dashboard for inventory, orders, and business visibility',
       'Mobile-first responsive interface for retail customers',
     ],
-    liveUrl: '#',
+    liveUrl: 'https://e-commerce-iota-smoky.vercel.app/',
     githubUrl: 'https://github.com/YuvrajCodes11',
   },
 ];

@@ -66,7 +66,7 @@ function MetricCard({ metric }: { metric: (typeof TRUST_METRICS)[number] }) {
 
 function ProjectScreen({ projectId }: { projectId: string }) {
   const isCommerce = projectId === 'king-queen';
-  const isMintyNex = projectId === 'mintynex';
+  const isMintyNex = projectId === 'mintynex' || projectId === 'pokevault';
   const isBlue = projectId === 'blue';
 
   const rows = isCommerce

@@ -66,9 +66,21 @@ function MetricCard({ metric }: { metric: (typeof TRUST_METRICS)[number] }) {
 
 function ProjectScreen({ projectId }: { projectId: string }) {
   const isCommerce = projectId === 'king-queen';
+  const isMintyNex = projectId === 'mintynex';
+  const isBlue = projectId === 'blue';
+
   const rows = isCommerce
     ? ['Order #1084', 'Payment verified', 'Inventory synced', 'Admin notified']
-    : ['New community post', 'Trade request accepted', 'Marketplace item saved', 'Message delivered'];
+    : isMintyNex
+    ? ['New card binder listing', 'Trade proposal accepted', 'PSA 10 card verified', 'Trainer message received']
+    : isBlue
+    ? ['Telemetry data updated', 'BMU report logged', 'Fishery yield tracked', 'Conservation alert clear']
+    : ['Technician dispatched', 'AMC service scheduled', 'Material BOQ issued', 'Customer invoice sent'];
+
+  const kpi1Value = isCommerce ? '₹2.4L' : isMintyNex ? '8.4K+' : isBlue ? '142' : '350+';
+  const kpi1Label = isCommerce ? 'Monthly sales' : isMintyNex ? 'Trainers' : isBlue ? 'Coastal Units' : 'Active AMCs';
+  const kpi2Value = isCommerce ? '94%' : isMintyNex ? '3.4K' : isBlue ? '99.8%' : '12m';
+  const kpi2Label = isCommerce ? 'Checkout health' : isMintyNex ? 'Card Listings' : isBlue ? 'Uptime Data' : 'Avg Response';
 
   return (
     <div className="screen-shot" aria-label={`${projectId} product screenshot mockup`}>
@@ -87,12 +99,12 @@ function ProjectScreen({ projectId }: { projectId: string }) {
         <div className="screen-main">
           <div className="screen-kpis">
             <div>
-              <strong>{isCommerce ? '₹2.4L' : '12.8K'}</strong>
-              <small>{isCommerce ? 'Monthly sales' : 'Platform events'}</small>
+              <strong>{kpi1Value}</strong>
+              <small>{kpi1Label}</small>
             </div>
             <div>
-              <strong>{isCommerce ? '94%' : '4.8ms'}</strong>
-              <small>{isCommerce ? 'Checkout health' : 'API response'}</small>
+              <strong>{kpi2Value}</strong>
+              <small>{kpi2Label}</small>
             </div>
           </div>
           <div className="screen-chart">
@@ -300,7 +312,13 @@ function App() {
                     ))}
                   </div>
                   <div className="case-actions">
-                    <a href={project.liveUrl} aria-disabled={project.liveUrl === '#'} onClick={(event) => project.liveUrl === '#' && event.preventDefault()}>
+                    <a
+                      href={project.liveUrl}
+                      target={project.liveUrl !== '#' ? '_blank' : undefined}
+                      rel={project.liveUrl !== '#' ? 'noreferrer' : undefined}
+                      aria-disabled={project.liveUrl === '#'}
+                      onClick={(event) => project.liveUrl === '#' && event.preventDefault()}
+                    >
                       Live Demo
                       <ExternalLink size={16} />
                     </a>

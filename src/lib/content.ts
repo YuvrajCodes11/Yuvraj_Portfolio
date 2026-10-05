@@ -45,7 +45,7 @@ export interface Channel {
   handle: string
   href: string
   /** Renders as a file download instead of an external link. */
-  download?: boolean
+  download?: boolean | string
 }
 
 export const profile = {
@@ -58,7 +58,7 @@ export const profile = {
   github: 'https://github.com/YuvrajCodes11',
   linkedin: 'https://www.linkedin.com/in/yuvraj-singh-sidhu-86b961385',
   x: 'https://x.com/Yuvraj_S11',
-  resumeUrl: '/resume.pdf',
+  resumeUrl: '/Yuvraj_Singh_Sidhu_Resume.pdf',
   portfolioUrl: 'https://yuvraj-portfolio-murex.vercel.app/',
   canonicalUrl: 'https://yuvrajcodes11.vercel.app',
   pitch:
@@ -329,7 +329,7 @@ export const channels: Channel[] = [
   { label: 'LinkedIn', handle: 'yuvraj-singh-sidhu', href: profile.linkedin },
   { label: 'GitHub', handle: 'YuvrajCodes11', href: profile.github },
   { label: 'X', handle: '@Yuvraj_S11', href: profile.x },
-  { label: 'Resume', handle: 'Download PDF', href: profile.resumeUrl, download: true },
+  { label: 'Resume', handle: 'Download PDF', href: profile.resumeUrl, download: 'Yuvraj_Singh_Sidhu_Resume.pdf' },
 ]
 
 export const navLinks = [

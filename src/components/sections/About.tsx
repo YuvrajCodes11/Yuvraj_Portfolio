@@ -3,11 +3,11 @@ import { HoloCard } from '../fx/HoloCard'
 import { Reveal } from '../motion/Reveal'
 import { SectionHead } from '../ui/SectionHead'
 
-const FACTS: Array<{ k: string; v: string; href?: string; download?: boolean }> = [
+const FACTS: Array<{ k: string; v: string; href?: string; download?: boolean | string }> = [
   { k: 'Based in', v: profile.location },
   { k: 'Focus', v: 'SaaS, dashboards, APIs' },
   { k: 'Status', v: 'Open to freelance' },
-  { k: 'Resume', v: 'Download PDF', href: profile.resumeUrl, download: true },
+  { k: 'Resume', v: 'Download PDF', href: profile.resumeUrl, download: 'Yuvraj_Singh_Sidhu_Resume.pdf' },
 ]
 
 export function About() {

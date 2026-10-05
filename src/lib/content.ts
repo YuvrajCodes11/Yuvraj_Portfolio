@@ -80,7 +80,7 @@ export const rotatingWords = [
 ] as const
 
 export const metrics: Metric[] = [
-  { label: 'Production Projects', value: 10, suffix: '+', note: 'Live deployed platforms' },
+  { label: 'Production Projects', value: 7, suffix: '+', note: 'Live deployed platforms' },
   { label: 'Technologies', value: 12, suffix: '+', note: 'Modern full-stack tools' },
   { label: 'Client Satisfaction', value: 100, suffix: '%', note: 'Reliability-first delivery' },
   { label: 'Fast Delivery', value: 14, suffix: 'd', note: 'MVP-ready sprint cycles' },
@@ -181,31 +181,8 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/YuvrajCodes11/the-tokyo-archive',
   },
   {
-    id: 'legal-contract-analysis',
-    index: '03',
-    title: 'LEXIS-AI Legal Workstation',
-    subtitle: 'AI-Powered Legal Contract Analysis & Citation Workstation',
-    category: 'AI Legaltech',
-    status: 'Production Ready',
-    overview:
-      'A mission-critical legal contract analysis workstation equipped with an agentic research engine, verified quote citations, and multi-document semantic comparison.',
-    features: [
-      'AI Agentic research engine for deep legal clause analysis',
-      'Verified quote citation engine linking query outputs directly to document source text',
-      'Multi-document semantic comparison and version diffing',
-      'High-contrast dark workstation interface tailored for legal professionals',
-    ],
-    results: [
-      'Reduces contract review cycles with automated clause extraction',
-      'Zero-hallucination quote verification for legal compliance',
-    ],
-    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'React.js', 'Vercel'],
-    liveUrl: 'https://legal-contract-analysis.vercel.app/',
-    githubUrl: 'https://github.com/YuvrajCodes11/legal-contract-analysis',
-  },
-  {
     id: 'vanguard-journal',
-    index: '04',
+    index: '03',
     title: 'Vanguard Journal',
     subtitle: 'High-Performance Executive Editorial & Thought Leadership Platform',
     category: 'Editorial Platform',
@@ -228,7 +205,7 @@ export const projects: Project[] = [
   },
   {
     id: 'blue',
-    index: '05',
+    index: '04',
     title: 'BLUE',
     subtitle: 'Blue Economy Livelihoods Unified Ecosystem',
     category: 'Ocean intelligence',
@@ -255,7 +232,7 @@ export const projects: Project[] = [
   },
   {
     id: 'waypoint',
-    index: '06',
+    index: '05',
     title: 'WayPoint',
     subtitle: 'AI Travel Co-Pilot & Native Mobile Application',
     category: 'iOS & Web app',
@@ -273,7 +250,7 @@ export const projects: Project[] = [
   },
   {
     id: 'ac-management',
-    index: '07',
+    index: '06',
     title: 'AC Management App',
     subtitle: 'Air Conditioning Services ERP & Operations System',
     category: 'ERP & operations',
@@ -299,7 +276,7 @@ export const projects: Project[] = [
   },
   {
     id: 'king-queen',
-    index: '08',
+    index: '07',
     title: 'A King & A Queen',
     subtitle: 'Premium Fashion E-Commerce Platform',
     category: 'E-commerce',
@@ -323,81 +300,6 @@ export const projects: Project[] = [
     stack: ['React.js', 'JavaScript', 'CSS3', 'Java', 'Spring Boot', 'MySQL', 'Supabase'],
     liveUrl: 'https://e-commerce-iota-smoky.vercel.app/',
     githubUrl: 'https://github.com/YuvrajCodes11',
-  },
-  {
-    id: 'bloom-n-blossom',
-    index: '09',
-    title: 'Bloom n Blossom Kasauli',
-    subtitle: 'Luxury Mountain Homestay Website',
-    category: 'Hospitality website',
-    status: 'Production Ready',
-    overview:
-      'A luxury marketing site for a mountain homestay in Kasauli, built to showcase the property with video and send guests straight through to its Airbnb listing.',
-    features: [
-      'Full-screen hero video with a mobile-specific video source and tap-to-play fallback',
-      'Hover-to-play video tours of the living room, balcony and bedroom',
-      'Amenities grid that expands and collapses, plus a swipeable review carousel',
-      'Booking card with date and guest selection, live price calculation and Airbnb deep link',
-      'Fully responsive layout with scroll-triggered section reveals',
-    ],
-    stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
-    liveUrl: 'https://air-bnb-five-pied.vercel.app/',
-    githubUrl: 'https://github.com/YuvrajCodes11/AirBNB',
-  },
-  {
-    id: 'cab-tours',
-    index: '10',
-    title: 'North India Cab & Tours',
-    subtitle: 'Premium Booking Website for Cab Operators',
-    category: 'Booking website',
-    status: 'Production Ready',
-    overview:
-      'A booking application built for a cab operator featuring fleet showcase, route pricing calculators, and direct WhatsApp enquiry routing.',
-    features: [
-      'Multi-page App Router site: home, destinations, services, fleet, gallery, about and contact',
-      'Quick-enquiry form that opens a pre-filled WhatsApp message',
-      'Sticky mobile call and WhatsApp bar, FAQ accordion and review cards',
-      'Single config file for business details, so real content drops in effortlessly',
-      'Sitemap and robots generated for search engine indexing',
-    ],
-    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Vercel'],
-    liveUrl: 'https://cab-webapp.vercel.app/',
-    githubUrl: 'https://github.com/YuvrajCodes11/CAB_WEBAPP',
-  },
-  {
-    id: 'trust-trade',
-    index: '11',
-    title: 'TrustTrade',
-    subtitle: 'Secure Escrow & Verified Trading Infrastructure',
-    category: 'Fintech / Escrow',
-    status: 'Production Ready',
-    overview:
-      'A trustless trading and escrow platform designed to facilitate verified asset exchange with real-time settlement tracking.',
-    features: [
-      'Verified transaction escrow workflows for safe asset exchange',
-      'Real-time trade status monitoring and audit trails',
-      'Responsive dark dashboard with intuitive trade controls',
-    ],
-    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel'],
-    liveUrl: 'https://trust-trade-zeta.vercel.app/',
-    githubUrl: 'https://github.com/YuvrajCodes11/TrustTrade',
-  },
-  {
-    id: 'unlimited-ai-server',
-    index: '12',
-    title: 'Unlimited AI Server',
-    subtitle: 'High-Throughput AI Backend & API Gateway',
-    category: 'AI Infrastructure',
-    status: 'Production Ready',
-    overview:
-      'A scalable AI backend proxy and orchestration server providing high-throughput streaming endpoints for custom AI integrations.',
-    features: [
-      'Streaming API proxy for LLM model inference and prompt routing',
-      'Rate limiting, authentication middleware, and latency optimization',
-    ],
-    stack: ['Node.js', 'TypeScript', 'Express', 'Vercel'],
-    liveUrl: 'https://unlimited-ai-server.vercel.app/',
-    githubUrl: 'https://github.com/YuvrajCodes11/Unlimited-AI',
   },
 ]
 

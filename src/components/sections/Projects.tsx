@@ -107,14 +107,35 @@ function ProjectCard({
           ) : null}
         </ul>
 
-        <button
-          type="button"
-          className="t-mono mt-auto flex items-center justify-between gap-2 border-t border-[var(--line)] pt-2.5 text-left text-[var(--accent)]"
-          aria-label={`Open ${project.title} case study`}
-        >
-          <span>Case study</span>
-          <span aria-hidden>+</span>
-        </button>
+        <div className="mt-auto flex items-center justify-between gap-2 border-t border-[var(--line)] pt-2.5">
+          <button
+            type="button"
+            className="t-mono flex items-center gap-1 text-[var(--accent)] hover:underline"
+            onClick={(e) => {
+              e.stopPropagation()
+              onOpen(project)
+            }}
+            aria-label={`Open ${project.title} case study`}
+          >
+            <span>Case study</span>
+            <span aria-hidden>+</span>
+          </button>
+          {project.liveUrl ? (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="t-mono flex items-center gap-1 text-xs text-[var(--fg-muted)] hover:text-[var(--accent)] transition-colors"
+              aria-label={`Open live site for ${project.title}`}
+            >
+              <span>Live Site</span>
+              <svg aria-hidden viewBox="0 0 16 16" className="size-3" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 12 12 4M5.5 4H12v6.5" />
+              </svg>
+            </a>
+          ) : null}
+        </div>
       </SpotlightCard>
     </m.article>
   )

@@ -19,6 +19,7 @@ export function HoloCard() {
   const reduced = useReducedMotion()
   const ref = useRef<HTMLDivElement>(null)
   const [imgOk, setImgOk] = useState(true)
+  const [isHovered, setIsHovered] = useState(false)
 
   const rx = useMotionValue(0)
   const ry = useMotionValue(0)
@@ -26,9 +27,10 @@ export function HoloCard() {
   const sry = useSpring(ry, { stiffness: 170, damping: 18, mass: 0.6 })
   const gx = useMotionValue(50)
   const gy = useMotionValue(30)
-  const sheen = useMotionTemplate`radial-gradient(circle at ${gx}% ${gy}%, rgb(255 255 255 / 0.55), rgb(200 255 61 / 0.22) 22%, rgb(110 231 255 / 0.2) 42%, transparent 66%)`
+  const sheen = useMotionTemplate`radial-gradient(circle at ${gx}% ${gy}%, rgb(255 255 255 / 0.4), rgb(200 255 61 / 0.18) 22%, rgb(110 231 255 / 0.15) 42%, transparent 66%)`
 
   const onMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isHovered) setIsHovered(true)
     if (!fine || reduced || !ref.current) return
     const r = ref.current.getBoundingClientRect()
     const px = (e.clientX - r.left) / r.width
@@ -39,6 +41,7 @@ export function HoloCard() {
     gy.set(py * 100)
   }
   const onLeave = () => {
+    setIsHovered(false)
     rx.set(0)
     ry.set(0)
     gx.set(50)
@@ -59,7 +62,7 @@ export function HoloCard() {
         style={{ rotateX: srx, rotateY: sry, transformStyle: 'preserve-3d' }}
         className="relative"
       >
-        <div className="glass aspect-[4/5] w-full" data-active="true">
+        <div className="glass aspect-[4/5] w-full">
           {imgOk ? (
             <img
               src={profile.avatar}
@@ -69,7 +72,7 @@ export function HoloCard() {
               loading="lazy"
               decoding="async"
               onError={() => setImgOk(false)}
-              className="absolute inset-0 h-full w-full object-cover saturate-[0.9] contrast-[1.05]"
+              className="absolute inset-0 h-full w-full object-cover"
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
@@ -80,13 +83,14 @@ export function HoloCard() {
           {/* holographic sheen + faint iridescent conic wash */}
           <m.div
             aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-50 mix-blend-color-dodge"
-            style={{ backgroundImage: sheen }}
+            className="pointer-events-none absolute inset-0 mix-blend-color-dodge transition-opacity duration-300"
+            style={{ backgroundImage: sheen, opacity: isHovered ? 0.35 : 0 }}
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-[0.16] mix-blend-overlay"
+            className="pointer-events-none absolute inset-0 mix-blend-overlay transition-opacity duration-300"
             style={{
+              opacity: isHovered ? 0.12 : 0,
               background:
                 'conic-gradient(from 200deg at 50% 50%, #c8ff3d, #6ee7ff, #b58cff, #ff8fb1, #c8ff3d)',
             }}

@@ -139,10 +139,17 @@ function Panel({ project, onClose }: { project: Project; onClose: () => void }) 
         </div>
 
         {project.liveUrl || project.githubUrl ? (
-          <div className="flex flex-wrap gap-2 border-t border-[var(--line)] p-[var(--card-pad)] pt-3 pb-[max(var(--card-pad),env(safe-area-inset-bottom))]">
-            {project.liveUrl ? <ButtonLink href={project.liveUrl}>Live demo</ButtonLink> : null}
+          <div className="flex flex-wrap gap-2.5 border-t border-[var(--line)] p-[var(--card-pad)] pt-3 pb-[max(var(--card-pad),env(safe-area-inset-bottom))]">
+            {project.liveUrl ? (
+              <ButtonLink
+                href={project.liveUrl}
+                className="text-base font-bold shadow-[0_0_20px_rgba(200,255,61,0.25)] hover:shadow-[0_0_30px_rgba(200,255,61,0.4)]"
+              >
+                Live demo
+              </ButtonLink>
+            ) : null}
             {project.githubUrl ? (
-              <ButtonLink href={project.githubUrl} variant="ghost">
+              <ButtonLink href={project.githubUrl} variant="ghost" className="text-base font-medium">
                 GitHub
               </ButtonLink>
             ) : null}

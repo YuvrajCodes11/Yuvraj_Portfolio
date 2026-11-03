@@ -107,10 +107,10 @@ function ProjectCard({
           ) : null}
         </ul>
 
-        <div className="mt-auto flex items-center justify-between gap-2 border-t border-[var(--line)] pt-2.5">
+        <div className="mt-auto flex items-center justify-between gap-2 border-t border-[var(--line)] pt-3">
           <button
             type="button"
-            className="t-mono flex items-center gap-1 text-[var(--accent)] hover:underline"
+            className="group/cs inline-flex items-center gap-1.5 rounded-full bg-[var(--accent)]/15 border border-[var(--accent)]/40 px-3.5 py-1.5 text-xs sm:text-sm font-semibold tracking-wide text-[var(--accent)] shadow-[0_0_12px_rgba(200,255,61,0.15)] hover:bg-[var(--accent)] hover:text-[#08080b] hover:shadow-[0_0_18px_rgba(200,255,61,0.35)] transition-all duration-200"
             onClick={(e) => {
               e.stopPropagation()
               onOpen(project)
@@ -118,7 +118,7 @@ function ProjectCard({
             aria-label={`Open ${project.title} case study`}
           >
             <span>Case study</span>
-            <span aria-hidden>+</span>
+            <span aria-hidden className="text-base leading-none transition-transform duration-200 group-hover/cs:rotate-45">+</span>
           </button>
           {project.liveUrl ? (
             <a
@@ -126,11 +126,20 @@ function ProjectCard({
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="t-mono flex items-center gap-1 text-xs text-[var(--fg-muted)] hover:text-[var(--accent)] transition-colors"
-              aria-label={`Open live site for ${project.title}`}
+              className="group/demo inline-flex items-center gap-1.5 rounded-full bg-[var(--accent-2)]/15 border border-[var(--accent-2)]/40 px-3.5 py-1.5 text-xs sm:text-sm font-semibold tracking-wide text-[var(--accent-2)] shadow-[0_0_12px_rgba(110,231,255,0.15)] hover:bg-[var(--accent-2)] hover:text-[#08080b] hover:shadow-[0_0_18px_rgba(110,231,255,0.35)] transition-all duration-200"
+              aria-label={`Open live demo for ${project.title}`}
             >
-              <span>Live Site</span>
-              <svg aria-hidden viewBox="0 0 16 16" className="size-3" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+              <span>Live Demo</span>
+              <svg
+                aria-hidden
+                viewBox="0 0 16 16"
+                className="size-3.5 transition-transform duration-200 group-hover/demo:translate-x-0.5 group-hover/demo:-translate-y-0.5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <path d="M4 12 12 4M5.5 4H12v6.5" />
               </svg>
             </a>

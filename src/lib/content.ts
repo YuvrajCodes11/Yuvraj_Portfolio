@@ -1,6 +1,6 @@
 /**
  * Single source of truth for all portfolio copy and data.
- * Merged from the original repo (src/data.ts) plus the verified WayPoint / contact details.
+ * Merged from the original repo (src/data.ts) plus verified contact details.
  * Every section reads from here: edit this file, never the components.
  */
 import profilePhoto from '../assets/images/yuvraj_profile_photo.jpeg'
@@ -131,81 +131,35 @@ export const services: Service[] = [
 
 export const projects: Project[] = [
   {
-    id: 'pokevault',
+    id: 'ac-management',
     index: '01',
-    title: 'PokeVault',
-    subtitle: 'Global TCG Trading Cards & Collector Community Platform',
-    category: 'Social marketplace',
+    title: 'AC Management App',
+    subtitle: 'Air Conditioning Services ERP & Operations System',
+    category: 'ERP & operations',
     status: 'Production Ready',
     problem:
-      'Trading card collectors needed a trusted, dedicated platform to showcase digital binders, connect with local/global trainers, and arrange verified face-to-face card trades without high marketplace fees or shipping scam risks.',
+      'Air conditioning service companies struggle to coordinate customer service requests, technician dispatching, BOQ material issues, AMC reminders, inventory, and executive business visibility across manual logs.',
     solution:
-      'Designed and built a complete TCG community platform with digital binder management, PSA/BGS grade filters, real-time community pull feed, trainer reputation levels, direct messaging, and structured trade proposals.',
+      'Engineered a full-stack service management ERP system with role-based access for CEOs, managers, and service technicians to manage bookings, inventory, material dispatches, and business reporting.',
     results: [
-      'Live platform hosting 8,400+ active trainers and 3,400+ card listings',
-      'Digital binder system with real card artwork, grade filters, and market value tracking',
-      'In-person trade proposal engine with verified badges and rating system',
+      'Full service operations ERP system with role-based CEO and Manager portals',
+      'Automated AMC reminders, customer service dispatches, and material issue tracking',
+      'Live demo environment deployed on Render infrastructure with instant demo login',
     ],
     features: [
-      'Digital binder to showcase TCG collection with PSA/BGS grades and market pricing',
-      'In-person safe trading engine with structured proposals and zero shipping risk',
-      'Live community feed for trainers to share pack pulls, slabs, and trade updates',
-      'CardVault marketplace with 3,400+ listings filtered by grade, set, and region',
-      'Trainer ranking system (Rookie to Elite) with star rep ratings and verified badges',
+      'Role-based portals (CEO / Owner view, Manager view, Technician view)',
+      'Customer management and service request ticket tracking',
+      'Technician scheduling, AMC contract renewals, and BOQ material issue control',
+      'Real-time business reports, inventory tracking, and operational analytics',
+      'Live production deployment on Render with demo account access',
     ],
-    stack: ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Vercel'],
-    liveUrl: 'https://minty-nex-frontend.vercel.app/',
-    githubUrl: 'https://github.com/YuvrajCodes11',
-  },
-  {
-    id: 'the-tokyo-archive',
-    index: '02',
-    title: 'The Tokyo Archive',
-    subtitle: 'Marc Jacobs Tokyo Capsule Collection & Interactive Experience',
-    category: 'Interactive Experience',
-    status: 'Production Ready',
-    overview:
-      'An interactive digital experience showcasing the Marc Jacobs Tokyo capsule collection featuring 300 numbered pieces, dynamic Japanese typography, and a graphic-novel narrative aesthetic.',
-    features: [
-      'Interactive graphic-novel experience for the Tokyo capsule release',
-      'Custom luxury typography with Cinzel Decorative and Shippori Mincho fonts',
-      'Dynamic GSAP animation timeline with interactive seal-carving reveal',
-      'Mobile-optimized dark UI with micro-interactions and smooth performance',
-    ],
-    results: [
-      'High-converting interactive showcase for limited capsule release',
-      'Smooth GSAP motion experience across mobile and desktop devices',
-    ],
-    stack: ['React.js', 'Vite', 'GSAP', 'CSS3', 'Vercel'],
-    liveUrl: 'https://the-tokyo-archive.vercel.app/',
-    githubUrl: 'https://github.com/YuvrajCodes11/the-tokyo-archive',
-  },
-  {
-    id: 'vanguard-journal',
-    index: '03',
-    title: 'Vanguard Journal',
-    subtitle: 'High-Performance Executive Editorial & Thought Leadership Platform',
-    category: 'Editorial Platform',
-    status: 'Production Ready',
-    overview:
-      'An executive journal platform engineered for ultra-fast load times (<50ms), RankMath SEO schema integration, reading progress tracking, and tabbed advisory insights.',
-    features: [
-      'Sub-50ms load speed with 100/100 Lighthouse performance audit score',
-      'Embedded Article and Person JSON-LD schema for SEO search visibility',
-      'Interactive reading progress indicator and dynamic table of contents',
-      'Executive profile, career timeline, and active advisory showcase',
-    ],
-    results: [
-      'Perfect 100/100 Lighthouse performance score',
-      'Serves 100,000+ monthly readers with clean semantic markup',
-    ],
-    stack: ['JavaScript', 'HTML5', 'CSS3', 'Vercel'],
-    liveUrl: 'https://vanguard-journal-one.vercel.app/',
-    githubUrl: 'https://github.com/YuvrajCodes11/Vanguard-Journal',
+    stack: ['Python', 'Django', 'Tailwind CSS', 'PostgreSQL', 'Render'],
+    liveUrl: 'https://ac-management-webapp.onrender.com',
+    githubUrl: 'https://github.com/YuvrajCodes11/AC_management_WEBAPP',
   },
   {
     id: 'blue',
-    index: '04',
+    index: '02',
     title: 'BLUE',
     subtitle: 'Blue Economy Livelihoods Unified Ecosystem',
     category: 'Ocean intelligence',
@@ -231,52 +185,31 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/YuvrajCodes11',
   },
   {
-    id: 'waypoint',
-    index: '05',
-    title: 'WayPoint',
-    subtitle: 'AI Travel Co-Pilot & Native Mobile Application',
-    category: 'iOS & Web app',
-    status: 'Shipathon Finalist',
-    overview:
-      'An offline-first, AI-powered travel co-pilot and itinerary generator built with Swift, SwiftUI, and modern web application interfaces.',
-    features: [
-      'Offline-first travel itinerary generator powered by SwiftData',
-      'AI route planning and destination point-of-interest suggestions',
-      'Responsive web deployment and iOS native application ecosystem',
-    ],
-    stack: ['Swift', 'SwiftUI', 'SwiftData', 'React.js', 'Vercel'],
-    liveUrl: 'https://waypoint-live-ten.vercel.app/',
-    githubUrl: 'https://github.com/YuvrajCodes11',
-  },
-  {
-    id: 'ac-management',
-    index: '06',
-    title: 'AC Management App',
-    subtitle: 'Air Conditioning Services ERP & Operations System',
-    category: 'ERP & operations',
+    id: 'the-tokyo-archive',
+    index: '03',
+    title: 'The Tokyo Archive',
+    subtitle: 'Marc Jacobs Tokyo Capsule Collection & Interactive Experience',
+    category: 'Interactive Experience',
     status: 'Production Ready',
-    problem:
-      'Air conditioning service companies struggle to coordinate customer service requests, technician dispatching, BOQ material issues, AMC reminders, inventory, and executive business visibility across manual logs.',
-    solution:
-      'Engineered a full-stack service management ERP system with role-based access for CEOs, managers, and service technicians to manage bookings, inventory, material dispatches, and business reporting.',
-    results: [
-      'Full service operations ERP system with role-based CEO and Manager portals',
-      'Automated AMC reminders, customer service dispatches, and material issue tracking',
-      'Live demo environment deployed on Railway infrastructure with instant demo login',
-    ],
+    overview:
+      'An interactive digital experience showcasing the Marc Jacobs Tokyo capsule collection featuring 300 numbered pieces, dynamic Japanese typography, and a graphic-novel narrative aesthetic.',
     features: [
-      'Role-based portals (CEO / Owner view, Manager view, Technician view)',
-      'Customer management and service request ticket tracking',
-      'Technician scheduling, AMC contract renewals, and BOQ material issue control',
-      'Real-time business reports, inventory tracking, and operational analytics',
-      'Live production deployment on Railway with demo account access',
+      'Interactive graphic-novel experience for the Tokyo capsule release',
+      'Custom luxury typography with Cinzel Decorative and Shippori Mincho fonts',
+      'Dynamic GSAP animation timeline with interactive seal-carving reveal',
+      'Mobile-optimized dark UI with micro-interactions and smooth performance',
     ],
-    stack: ['Java', 'Spring Boot', 'React.js', 'Tailwind CSS', 'PostgreSQL', 'Railway'],
-    githubUrl: 'https://github.com/YuvrajCodes11',
+    results: [
+      'High-converting interactive showcase for limited capsule release',
+      'Smooth GSAP motion experience across mobile and desktop devices',
+    ],
+    stack: ['React.js', 'Vite', 'GSAP', 'CSS3', 'Vercel'],
+    liveUrl: 'https://the-tokyo-archive.vercel.app/',
+    githubUrl: 'https://github.com/YuvrajCodes11/the-tokyo-archive',
   },
   {
     id: 'king-queen',
-    index: '07',
+    index: '04',
     title: 'A King & A Queen',
     subtitle: 'Premium Fashion E-Commerce Platform',
     category: 'E-commerce',
@@ -301,6 +234,29 @@ export const projects: Project[] = [
     liveUrl: 'https://e-commerce-iota-smoky.vercel.app/',
     githubUrl: 'https://github.com/YuvrajCodes11',
   },
+  {
+    id: 'vanguard-journal',
+    index: '05',
+    title: 'Vanguard Journal',
+    subtitle: 'High-Performance Executive Editorial & Thought Leadership Platform',
+    category: 'Editorial Platform',
+    status: 'Production Ready',
+    overview:
+      'An executive journal platform engineered for ultra-fast load times (<50ms), RankMath SEO schema integration, reading progress tracking, and tabbed advisory insights.',
+    features: [
+      'Sub-50ms load speed with 100/100 Lighthouse performance audit score',
+      'Embedded Article and Person JSON-LD schema for SEO search visibility',
+      'Interactive reading progress indicator and dynamic table of contents',
+      'Executive profile, career timeline, and active advisory showcase',
+    ],
+    results: [
+      'Perfect 100/100 Lighthouse performance score',
+      'Serves 100,000+ monthly readers with clean semantic markup',
+    ],
+    stack: ['JavaScript', 'HTML5', 'CSS3', 'Vercel'],
+    liveUrl: 'https://vanguard-journal-one.vercel.app/',
+    githubUrl: 'https://github.com/YuvrajCodes11/Vanguard-Journal',
+  },
 ]
 
 export const processSteps: Array<{ title: string; description: string }> = [
@@ -314,10 +270,10 @@ export const processSteps: Array<{ title: string; description: string }> = [
 
 export const stackGroups: StackGroup[] = [
   { label: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS'] },
-  { label: 'Backend', items: ['Node.js', 'Java', 'Spring Boot', 'REST APIs'] },
+  { label: 'Backend', items: ['Python', 'Django', 'Node.js', 'Java', 'Spring Boot', 'REST APIs'] },
   { label: 'Data', items: ['PostgreSQL', 'MySQL', 'Supabase'] },
   { label: 'Mobile', items: ['Swift', 'SwiftUI', 'SwiftData'] },
-  { label: 'Deploy', items: ['Vercel', 'Railway', 'Netlify'] },
+  { label: 'Deploy', items: ['Vercel', 'Render', 'Railway', 'Netlify'] },
 ]
 
 /** Flat list used by the hero ticker and the JSON-LD `knowsAbout` field. */

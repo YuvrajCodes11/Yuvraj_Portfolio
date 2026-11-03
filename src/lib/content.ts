@@ -234,29 +234,6 @@ export const projects: Project[] = [
     liveUrl: 'https://e-commerce-iota-smoky.vercel.app/',
     githubUrl: 'https://github.com/YuvrajCodes11',
   },
-  {
-    id: 'vanguard-journal',
-    index: '05',
-    title: 'Vanguard Journal',
-    subtitle: 'High-Performance Executive Editorial & Thought Leadership Platform',
-    category: 'Editorial Platform',
-    status: 'Production Ready',
-    overview:
-      'An executive journal platform engineered for ultra-fast load times (<50ms), RankMath SEO schema integration, reading progress tracking, and tabbed advisory insights.',
-    features: [
-      'Sub-50ms load speed with 100/100 Lighthouse performance audit score',
-      'Embedded Article and Person JSON-LD schema for SEO search visibility',
-      'Interactive reading progress indicator and dynamic table of contents',
-      'Executive profile, career timeline, and active advisory showcase',
-    ],
-    results: [
-      'Perfect 100/100 Lighthouse performance score',
-      'Serves 100,000+ monthly readers with clean semantic markup',
-    ],
-    stack: ['JavaScript', 'HTML5', 'CSS3', 'Vercel'],
-    liveUrl: 'https://vanguard-journal-one.vercel.app/',
-    githubUrl: 'https://github.com/YuvrajCodes11/Vanguard-Journal',
-  },
 ]
 
 export const processSteps: Array<{ title: string; description: string }> = [

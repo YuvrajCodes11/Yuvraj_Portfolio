@@ -15,11 +15,7 @@ export function CountUp({ to, suffix = '', duration = 1.4 }: CountUpProps) {
   const [value, setValue] = useState(0)
 
   useEffect(() => {
-    if (!inView) return
-    if (reduced) {
-      setValue(to)
-      return
-    }
+    if (!inView || reduced) return
     const controls = animate(0, to, {
       duration,
       ease: [0.16, 1, 0.3, 1],
@@ -28,9 +24,11 @@ export function CountUp({ to, suffix = '', duration = 1.4 }: CountUpProps) {
     return () => controls.stop()
   }, [inView, reduced, to, duration])
 
+  const displayValue = reduced ? to : value
+
   return (
     <span ref={ref} className="tabular-nums">
-      {value}
+      {displayValue}
       {suffix}
     </span>
   )

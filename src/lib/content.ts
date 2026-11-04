@@ -49,18 +49,18 @@ export interface Channel {
 }
 
 export const profile = {
-  name: 'Yuvraj Singh Sidhu',
-  role: 'Freelance Full-Stack Product Developer',
+  name: 'Yuvraj Sidhu',
+  role: 'Full-Stack Software Engineer & Web Architect',
   status: 'Available for freelance projects',
-  location: 'Chandigarh, India',
+  location: 'Chandigarh, Punjab, India',
   avatar: profilePhoto,
   email: 'yuvrajcodes11@gmail.com',
   github: 'https://github.com/YuvrajCodes11',
   linkedin: 'https://www.linkedin.com/in/yuvraj-singh-sidhu-86b961385',
   x: 'https://x.com/Yuvraj_S11',
   resumeUrl: '/Yuvraj_Singh_Sidhu_Resume.pdf',
-  portfolioUrl: 'https://yuvraj-portfolio-murex.vercel.app/',
-  canonicalUrl: 'https://yuvrajcodes11.vercel.app',
+  portfolioUrl: 'https://yuvrajsidhu.dev',
+  canonicalUrl: 'https://yuvrajsidhu.dev',
   pitch:
     'I help businesses replace messy manual work with reliable web products: customer portals, admin dashboards, e-commerce systems, API backends, and automation workflows built to launch fast and scale cleanly.',
   bio: 'I help founders and growing businesses turn operational problems into reliable web products: SaaS platforms, internal dashboards, CRM systems, API backends, and automation tools built for long-term use.',

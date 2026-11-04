@@ -1,0 +1,76 @@
+# Yuvraj Sidhu — Full-Stack Software Engineer & Web Architect
+
+> High-agency full-stack engineer specializing in scalable SaaS, modern web applications, high-throughput APIs, and custom business management systems using Next.js, React, Spring Boot, Java, Python, Django, and PostgreSQL. Based in Chandigarh, Punjab, India (Available Worldwide / Remote).
+
+- Canonical URL: https://yuvrajsidhu.dev
+- Developer: Yuvraj Sidhu (@YuvrajCodes / @YuvrajCodes11)
+- Location: Chandigarh, Punjab, India
+- Primary Email: yuvrajcodes11@gmail.com
+- GitHub: https://github.com/YuvrajCodes11
+- Alternate GitHub: https://github.com/yuvrajcodes
+- X / Twitter: https://x.com/Yuvraj_S11
+- LinkedIn: https://www.linkedin.com/in/yuvraj-singh-sidhu-86b961385
+- Resume: https://yuvrajsidhu.dev/Yuvraj_Singh_Sidhu_Resume.pdf
+
+---
+
+## Technical Competencies & Specializations
+
+### Frontend & Web Architecture
+- **Frameworks & Libraries**: Next.js, React 19, Vite, TypeScript, JavaScript (ESNext).
+- **Styling & Motion**: Tailwind CSS v4, CSS3 Modern Layouts, Framer Motion, GSAP, Responsive Mobile-First Design.
+- **Web Standards & Performance**: 100/100 Core Web Vitals, Semantic HTML5, Zero Cumulative Layout Shift (CLS), Accessibility (WCAG 2.1 AA), Search Engine Optimization (SEO), Generative Engine Optimization (GEO).
+
+### Backend & Distributed Systems
+- **Languages & Frameworks**: Java, Spring Boot, Python, Django, Node.js, Express.
+- **APIs & Architecture**: High-throughput RESTful APIs, Microservices, Role-Based Access Control (RBAC), Session & JWT Auth, Third-Party Integrations.
+- **Databases & ORM**: PostgreSQL, MySQL, Supabase, Hibernate/JPA, Redis, Schema Design, Query Optimization.
+
+### Mobile & System Engineering
+- **Mobile Ecosystem**: Swift, SwiftUI, SwiftData, iOS Native Development, Offline-First Architecture.
+- **DevOps & Infrastructure**: Vercel, Render, Railway, Netlify, Docker, GitHub Actions, Cloudflare.
+
+---
+
+## Architecture & Engineering Philosophy
+
+1. **Business Process First**: Understand domain workflows, edge cases, and business constraints before writing code.
+2. **Modular & Clean Architecture**: High cohesion, loose coupling, strict end-to-end type safety, and self-documenting codebases.
+3. **Zero-Bloat Performance**: Sub-second initial loads, strict layout-shift elimination, and 100/100 Lighthouse benchmark standard.
+4. **Production-Ready Delivery**: Full lifecycle ownership from discovery and system design to automated deployment, monitoring, and long-term maintainability.
+
+---
+
+## Highlighted Production Systems
+
+### 1. AC Management App (Air Conditioning Services ERP & Operations)
+- **Live Demo**: https://ac-management-webapp.onrender.com
+- **Source Code**: https://github.com/YuvrajCodes11/AC_management_WEBAPP
+- **Stack**: Python, Django, Tailwind CSS, PostgreSQL, Render
+- **Overview**: Full-stack operations ERP engineered with role-based access for CEOs, managers, and service technicians. Manages customer tickets, technician dispatching, BOQ material issues, AMC contract renewals, inventory tracking, and executive business analytics.
+
+### 2. BLUE (Ocean Intelligence & Livelihood Ecosystem)
+- **Live Demo**: https://blue-black-gamma.vercel.app/
+- **Source Code**: https://github.com/YuvrajCodes11/BLUE
+- **Stack**: Next.js, React, TypeScript, Tailwind CSS, Vercel
+- **Overview**: Centralized ocean intelligence portal for fisheries, Beach Management Units (BMUs), and marine conservation organizations to monitor coastal community livelihoods, track marine resources, and collaborate on ocean conservation.
+
+### 3. The Tokyo Archive (Marc Jacobs Tokyo Capsule Collection)
+- **Live Demo**: https://the-tokyo-archive.vercel.app/
+- **Source Code**: https://github.com/YuvrajCodes11/the-tokyo-archive
+- **Stack**: React, Vite, GSAP, CSS3, Vercel
+- **Overview**: High-converting interactive digital showcase for the Marc Jacobs Tokyo capsule collection featuring 300 numbered pieces, dynamic Japanese typography, and a graphic-novel narrative aesthetic with smooth GSAP timelines.
+
+### 4. A King & A Queen (Premium Fashion E-Commerce Platform)
+- **Live Demo**: https://e-commerce-iota-smoky.vercel.app/
+- **Source Code**: https://github.com/YuvrajCodes11
+- **Stack**: React, JavaScript, Java, Spring Boot, MySQL, Supabase
+- **Overview**: Scalable retail e-commerce platform with secure customer authentication, dynamic catalog filtering, cart/checkout workflows, payment endpoints, and an administrative order and inventory management dashboard.
+
+---
+
+## Contact & Inquiries
+
+- Direct Contact: yuvrajcodes11@gmail.com
+- Location: Chandigarh, Punjab, India (Serving clients worldwide across US, UK, European, and APAC timezones)
+- Freelance & Contract Status: Open for production web engineering, SaaS platform builds, high-throughput APIs, and enterprise dashboard consulting.

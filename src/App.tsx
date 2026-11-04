@@ -27,14 +27,41 @@ export default function App() {
   const schema = useMemo(
     () => ({
       '@context': 'https://schema.org',
-      '@type': 'Person',
-      name: profile.name,
-      email: profile.email,
-      jobTitle: profile.role,
-      url: profile.canonicalUrl,
-      sameAs: [profile.github, profile.linkedin, profile.x, profile.portfolioUrl],
-      knowsAbout: techStack,
-      offers: services.map((s) => ({ '@type': 'Service', name: s.title, description: s.description })),
+      '@graph': [
+        {
+          '@type': ['Person', 'SoftwareApplication'],
+          '@id': `${profile.canonicalUrl}/#person`,
+          name: profile.name,
+          alternateName: ['Yuvraj', 'YuvrajCodes', 'YuvrajCodes11', 'Yuvraj Singh Sidhu'],
+          url: profile.canonicalUrl,
+          image: `${profile.canonicalUrl}/og.png`,
+          jobTitle: profile.role,
+          description:
+            'Full-Stack Software Engineer specializing in modern web applications, distributed backend systems, and SaaS architecture.',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Chandigarh',
+            addressRegion: 'Punjab',
+            addressCountry: 'IN',
+          },
+          knowsAbout: techStack,
+          sameAs: [
+            'https://github.com/yuvrajcodes',
+            profile.github,
+            'https://x.com/yuvrajcodes',
+            profile.x,
+            profile.linkedin,
+          ],
+          offers: services.map((s) => ({ '@type': 'Service', name: s.title, description: s.description })),
+        },
+        {
+          '@type': 'WebSite',
+          '@id': `${profile.canonicalUrl}/#website`,
+          url: profile.canonicalUrl,
+          name: 'Yuvraj Sidhu - Official Portfolio',
+          publisher: { '@id': `${profile.canonicalUrl}/#person` },
+        },
+      ],
     }),
     [],
   )

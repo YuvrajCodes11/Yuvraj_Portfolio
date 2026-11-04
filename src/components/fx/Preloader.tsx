@@ -20,12 +20,22 @@ function markSeen(): void {
   }
 }
 
+function shouldSkip(): boolean {
+  if (typeof window === 'undefined') return false
+  try {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    return alreadySeen() || reduced
+  } catch {
+    return false
+  }
+}
+
 /**
  * Counter + curtain-lift intro. Plays once per session and is skipped for
  * reduced-motion users. SSR-safe: all browser APIs are touched inside effects.
  */
 export function Preloader({ onReveal }: { onReveal: () => void }) {
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(() => !shouldSkip())
   const [count, setCount] = useState(0)
   const reveal = useRef(onReveal)
 
@@ -34,9 +44,7 @@ export function Preloader({ onReveal }: { onReveal: () => void }) {
   }, [onReveal])
 
   useEffect(() => {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (alreadySeen() || reduced) {
-      setVisible(false)
+    if (!visible) {
       reveal.current()
       return
     }
@@ -51,7 +59,7 @@ export function Preloader({ onReveal }: { onReveal: () => void }) {
       },
     })
     return () => controls.stop()
-  }, [])
+  }, [visible])
 
   return (
     <AnimatePresence>

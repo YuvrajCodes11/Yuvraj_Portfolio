@@ -59,7 +59,7 @@ export function HoloCard() {
       <m.div
         animate={reduced || fine ? undefined : { y: [0, -6, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        style={{ rotateX: srx, rotateY: sry, transformStyle: 'preserve-3d' }}
+        style={{ rotateX: srx, rotateY: sry, transformStyle: 'preserve-3d', willChange: 'transform', transform: 'translateZ(0)' }}
         className="relative"
       >
         <div className="glass aspect-[4/5] w-full">

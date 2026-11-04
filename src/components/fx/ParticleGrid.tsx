@@ -166,6 +166,8 @@ export function ParticleGrid({ spacing = 30, radius = 130, className }: Particle
         width: '100%',
         height: '100%',
         display: 'block',
+        willChange: 'transform',
+        transform: 'translateZ(0)',
         maskImage: 'radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 100%)',
         WebkitMaskImage: 'radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 100%)',
       }}

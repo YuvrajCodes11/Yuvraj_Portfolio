@@ -189,23 +189,23 @@ export default function App() {
           <ScrollProgress />
           <CursorFX />
           <Nav />
-          {/* Dedicated zero-cost background layer — isolated from content to prevent WebKit tile corruption */}
+          {/* Background FX layer — dedicated fixed layer at z-0 */}
           <div
             aria-hidden
             className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
             style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}
           >
             <div
-              className="ambient-glow-1 left-[-10%] top-[4%] h-[55vmax] w-[55vmax]"
-              style={{ animation: 'drift-a 24s ease-in-out infinite alternate' }}
+              className="blob left-[-12%] top-[6%] h-[52vmax] w-[52vmax] bg-[var(--accent)]/30"
+              style={{ animation: 'drift-a 20s ease-in-out infinite alternate' }}
             />
             <div
-              className="ambient-glow-2 right-[-10%] bottom-[8%] h-[55vmax] w-[55vmax]"
-              style={{ animation: 'drift-b 28s ease-in-out infinite alternate' }}
+              className="blob right-[-12%] bottom-[6%] h-[56vmax] w-[56vmax] bg-[var(--accent-2)]/25"
+              style={{ animation: 'drift-b 24s ease-in-out infinite alternate' }}
             />
             <ParticleGrid />
           </div>
-          <main className="relative z-10" style={{ position: 'relative', zIndex: 10, isolation: 'isolate' }}>
+          <main className="relative z-10" style={{ position: 'relative', zIndex: 10 }}>
             <Hero />
             <Metrics />
             <Services />

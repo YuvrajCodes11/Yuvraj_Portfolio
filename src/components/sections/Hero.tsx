@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { m, useScroll, useTransform } from 'framer-motion'
 import { profile, rotatingWords, techStack } from '../../lib/content'
 import { useIntroReady } from '../../lib/intro'
-import { RotatingWord } from '../motion/KineticHeadline'
+import { MaskLine, RotatingWord } from '../motion/KineticHeadline'
 import { Magnetic } from '../motion/Magnetic'
 import { ButtonLink } from '../ui/ButtonLink'
 
@@ -41,12 +41,19 @@ export function Hero() {
           {profile.status}
         </m.p>
 
-        <h1 className="t-display">
-          <span className="block leading-[1.15]">I build</span>
-          <span className="block py-[0.1em] leading-[1.15]">
-            <RotatingWord words={rotatingWords} className="t-serif text-gradient" />
+        <h1
+          className="t-display relative z-20 [text-wrap:wrap]"
+          style={{ position: 'relative', zIndex: 20, lineHeight: 1.15 }}
+        >
+          <span className="block py-[0.08em] leading-[1.15]">
+            <MaskLine text="I build" play={ready} delay={0.05} />
           </span>
-          <span className="block leading-[1.15]">for growing businesses.</span>
+          <span className="block py-[0.15em] leading-[1.15]">
+            <RotatingWord words={rotatingWords} className="t-serif" wordClassName="text-gradient" />
+          </span>
+          <span className="block py-[0.08em] leading-[1.15]">
+            <MaskLine text="for growing businesses." play={ready} delay={0.3} />
+          </span>
         </h1>
 
         <m.p {...fade(0.75)} className="t-lead mt-[clamp(0.9rem,0.5rem+1.6vw,2rem)] max-w-[42ch]">

@@ -82,9 +82,11 @@ export function HoloCard() {
         animate={reduced || fine ? undefined : { y: [0, -6, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
         style={{
-          rotateX: isHovered && fine && !reduced ? srx : 0,
-          rotateY: isHovered && fine && !reduced ? sry : 0,
-          transformStyle: isHovered && fine && !reduced ? 'preserve-3d' : 'flat',
+          rotateX: srx,
+          rotateY: sry,
+          transformStyle: 'preserve-3d',
+          willChange: 'transform',
+          transform: 'translateZ(0)',
         }}
         className="relative"
       >
@@ -106,17 +108,17 @@ export function HoloCard() {
             </div>
           )}
 
-          {/* holographic sheen + faint iridescent conic wash */}
+          {/* holographic sheen + iridescent conic wash */}
           <m.div
             aria-hidden
-            className="pointer-events-none absolute inset-0 transition-opacity duration-300"
-            style={{ backgroundImage: sheen, opacity: isHovered ? 0.35 : 0 }}
+            className="pointer-events-none absolute inset-0 mix-blend-color-dodge transition-opacity duration-300"
+            style={{ backgroundImage: sheen, opacity: isHovered ? 0.38 : 0 }}
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 transition-opacity duration-300"
+            className="pointer-events-none absolute inset-0 mix-blend-overlay transition-opacity duration-300"
             style={{
-              opacity: isHovered ? 0.12 : 0,
+              opacity: isHovered ? 0.15 : 0,
               background:
                 'conic-gradient(from 200deg at 50% 50%, #c8ff3d, #6ee7ff, #b58cff, #ff8fb1, #c8ff3d)',
             }}

@@ -190,8 +190,12 @@ export function ParticleGrid({ spacing = 30, radius = 130, className }: Particle
       aria-hidden
       className={className}
       style={{
-        width: '100%',
-        height: '100%',
+        position: 'fixed',
+        inset: 0,
+        zIndex: 0,
+        pointerEvents: 'none',
+        width: '100vw',
+        height: '100vh',
         display: 'block',
         maskImage: 'radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 100%)',
         WebkitMaskImage: 'radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 100%)',

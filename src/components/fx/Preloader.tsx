@@ -35,9 +35,9 @@ function shouldSkip(): boolean {
 }
 
 /**
- * High-performance counter + curtain-lift intro.
- * Instant skip on touch/mobile, repeat visits, or slow networks (< 350ms on desktop).
- * SSR-safe and does not block DOM rendering.
+ * Stylish counter + curtain-lift intro.
+ * Smooth 0-100 count, silky curtain exit, and cleanly unmounts from the DOM.
+ * Plays once per session; skipped for reduced-motion or repeat visits.
  */
 export function Preloader({ onReveal }: { onReveal: () => void }) {
   const [skip] = useState(() => shouldSkip())
@@ -56,8 +56,8 @@ export function Preloader({ onReveal }: { onReveal: () => void }) {
     }
 
     const controls = animate(0, 100, {
-      duration: 0.32,
-      ease: [0.33, 1, 0.68, 1],
+      duration: 0.85,
+      ease: [0.65, 0, 0.35, 1],
       onUpdate: (v) => setCount(Math.round(v)),
       onComplete: () => {
         markSeen()
@@ -75,10 +75,10 @@ export function Preloader({ onReveal }: { onReveal: () => void }) {
           key="preloader"
           className="fixed inset-0 z-[100] flex items-end justify-between bg-[var(--bg)] p-[var(--gutter)] pointer-events-none"
           initial={{ y: 0 }}
-          exit={{ y: '-100%', transition: { duration: 0.35, ease: EASE } }}
+          exit={{ y: '-100%', transition: { duration: 0.75, ease: EASE } }}
         >
-          <span className="t-mono font-medium tracking-wider">Yuvraj Sidhu</span>
-          <span className="t-serif text-[clamp(3.5rem,15vw,10rem)] leading-none text-[var(--fg)] tabular-nums">
+          <span className="t-mono font-medium tracking-wider">Yuvraj Singh Sidhu</span>
+          <span className="t-serif text-[clamp(4rem,18vw,12rem)] leading-none text-[var(--fg)] tabular-nums">
             {String(count).padStart(2, '0')}
           </span>
         </m.div>

@@ -251,26 +251,35 @@ body {
   white-space: nowrap;
 }
 
-/* Ambient background glow: pure zero-cost CSS radial gradients, zero blur buffer (WebKit safe) */
+/* Ambient background blobs & glow */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  pointer-events: none;
+}
 .ambient-glow-1 {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle, rgb(200 255 61 / 0.16) 0%, rgb(200 255 61 / 0.05) 38%, transparent 70%);
+  filter: blur(80px);
+  background: radial-gradient(circle, rgb(200 255 61 / 0.28) 0%, rgb(200 255 61 / 0.08) 40%, transparent 70%);
   pointer-events: none;
 }
 .ambient-glow-2 {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle, rgb(110 231 255 / 0.14) 0%, rgb(110 231 255 / 0.04) 38%, transparent 70%);
+  filter: blur(80px);
+  background: radial-gradient(circle, rgb(110 231 255 / 0.24) 0%, rgb(110 231 255 / 0.06) 40%, transparent 70%);
   pointer-events: none;
 }
 @keyframes drift-a {
-  from { transform: translate3d(-3%, -2%, 0) scale(1); }
-  to { transform: translate3d(4%, 3%, 0) scale(1.08); }
+  from { transform: translate3d(-4%, -2%, 0) scale(1); }
+  to { transform: translate3d(6%, 5%, 0) scale(1.15); }
 }
 @keyframes drift-b {
-  from { transform: translate3d(3%, 3%, 0) scale(1.05); }
-  to { transform: translate3d(-4%, -3%, 0) scale(0.95); }
+  from { transform: translate3d(5%, 4%, 0) scale(1.1); }
+  to { transform: translate3d(-6%, -5%, 0) scale(0.95); }
 }
 
 /* Ticker */

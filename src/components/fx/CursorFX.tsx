@@ -50,26 +50,26 @@ export function CursorFX() {
     <>
       <m.div
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[1] h-[520px] w-[520px] rounded-full"
+        className="pointer-events-none fixed left-0 top-0 z-[40] h-[520px] w-[520px] rounded-full"
         style={{
           x: glowX,
           y: glowY,
           translateX: '-50%',
           translateY: '-50%',
           background:
-            'radial-gradient(circle, rgb(200 255 61 / 0.075) 0%, rgb(110 231 255 / 0.03) 40%, transparent 70%)',
+            'radial-gradient(circle, rgb(200 255 61 / 0.12) 0%, rgb(110 231 255 / 0.04) 40%, transparent 70%)',
         }}
       />
       <m.div
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[95] flex items-center justify-center rounded-full border border-[var(--accent)]"
+        className="pointer-events-none fixed left-0 top-0 z-[60] flex items-center justify-center rounded-full border border-[var(--accent)]"
         style={{ x: ringX, y: ringY, translateX: '-50%', translateY: '-50%' }}
         animate={{
           width: hover ? (label ? 84 : 46) : 28,
           height: hover ? (label ? 84 : 46) : 28,
           scale: pressed ? 0.85 : 1,
           backgroundColor: hover && label ? 'rgb(200 255 61 / 1)' : 'rgb(200 255 61 / 0)',
-          opacity: hover ? 1 : 0.55,
+          opacity: hover ? 1 : 0.65,
         }}
         transition={{ type: 'spring', stiffness: 380, damping: 26 }}
       >

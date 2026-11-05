@@ -190,7 +190,7 @@ export default function App() {
           <div
             aria-hidden
             className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
-            style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}
+            style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none', contain: 'strict' }}
           >
             <div
               className="blob left-[-12%] top-[6%] h-[52vmax] w-[52vmax] bg-[var(--accent)]/30"

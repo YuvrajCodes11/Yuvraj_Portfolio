@@ -14,7 +14,6 @@ interface MaskLineProps {
 /**
  * Kinetic staggered line — each word slides up from below.
  * Uses word-level overflow clip instead of char-level to keep GPU layer count low.
- * No will-change on individual chars (too expensive on mobile).
  */
 export function MaskLine({ text, delay = 0, play = true, className }: MaskLineProps) {
   const words = text.split(' ')
@@ -26,7 +25,6 @@ export function MaskLine({ text, delay = 0, play = true, className }: MaskLinePr
         <span
           key={wi}
           aria-hidden
-          // overflow-hidden clips the upward slide; pb/mb trick avoids descender clip
           className="inline-block whitespace-nowrap overflow-hidden align-bottom pb-[0.08em] -mb-[0.08em]"
         >
           {[...word].map((ch) => {
@@ -61,7 +59,7 @@ interface RotatingWordProps {
 /**
  * Rolling word swap using AnimatePresence mode="wait".
  * Words slide in from below, out upward — clean, no flicker.
- * Container reserves the longest word's width via invisible sizer (zero layout shift).
+ * Container is clamped to viewport width to prevent mobile overflow.
  */
 export function RotatingWord({ words, intervalMs = 2800, className, wordClassName }: RotatingWordProps) {
   const [i, setI] = useState(0)
@@ -71,21 +69,16 @@ export function RotatingWord({ words, intervalMs = 2800, className, wordClassNam
     return () => window.clearInterval(id)
   }, [words.length, intervalMs])
 
-  const longestWord = words.reduce((acc, w) => (w.length > acc.length ? w : acc), '')
-
   return (
     <span
       className={`relative inline-grid overflow-hidden align-bottom pb-[0.1em] -mb-[0.1em] ${className ?? ''}`}
-      style={{ display: 'inline-grid', gridTemplateColumns: '1fr', gridTemplateRows: '1fr' }}
+      style={{
+        display: 'inline-grid',
+        gridTemplateColumns: '1fr',
+        gridTemplateRows: '1fr',
+        maxWidth: 'calc(100vw - 2 * var(--gutter, 1rem))',
+      }}
     >
-      {/* Invisible sizer — locks the width to the longest word */}
-      <span
-        aria-hidden
-        className="invisible col-start-1 row-start-1 whitespace-nowrap pointer-events-none select-none"
-      >
-        {longestWord}
-      </span>
-
       {/* Screen-reader live region */}
       <span className="sr-only" aria-live="polite" aria-atomic="true">
         {words[i]}

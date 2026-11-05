@@ -56,8 +56,8 @@ export function Hero() {
           z-index: 20 keeps it above blob/canvas layers.
         */}
         <h1
-          className="t-display relative z-20 [text-wrap:balance]"
-          style={{ lineHeight: 1.08 }}
+          className="t-display relative z-20 max-w-full [text-wrap:balance]"
+          style={{ lineHeight: 1.08, overflowWrap: 'break-word' }}
         >
           <span className="block leading-[1.08]">
             <MaskLine text="I build" play={ready} delay={0.05} />

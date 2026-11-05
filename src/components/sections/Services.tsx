@@ -11,23 +11,29 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
   const panelId = `service-${index}`
 
   return (
-    <SpotlightCard className="h-full p-[var(--card-pad)] max-sm:rounded-none max-sm:border-0 max-sm:border-b max-sm:px-0 max-sm:py-2.5 max-sm:[background:none] max-sm:backdrop-blur-none">
+    <SpotlightCard className="h-full p-[var(--card-pad)] max-sm:rounded-none max-sm:border-0 max-sm:border-b max-sm:px-0 max-sm:py-3 max-sm:[background:none] max-sm:backdrop-blur-none">
       <h3 className="t-h3">
         <button
           type="button"
           aria-expanded={open}
           aria-controls={panelId}
           onClick={() => setOpen((o) => !o)}
-          className="flex w-full items-baseline gap-2.5 text-left sm:block sm:cursor-default"
+          className="flex w-full items-center gap-3 text-left sm:block sm:cursor-default py-1 sm:py-0"
         >
-          <span className="t-mono text-[var(--accent)] sm:mb-2 sm:block">{String(index + 1).padStart(2, '0')}</span>
-          <span className="flex-1">{service.title}</span>
-          <span aria-hidden className="text-[var(--accent)] sm:hidden">
-            {open ? '−' : '+'}
+          <span className="t-mono text-[var(--accent)] shrink-0 sm:mb-2 sm:block">{String(index + 1).padStart(2, '0')}</span>
+          <span className="flex-1 font-semibold">{service.title}</span>
+          <span
+            aria-hidden
+            className={cn(
+              'size-5 shrink-0 rounded-full border border-[var(--line)] flex items-center justify-center text-[var(--accent)] text-xs transition-transform duration-200 sm:hidden',
+              open && 'rotate-45'
+            )}
+          >
+            +
           </span>
         </button>
       </h3>
-      <p id={panelId} className={cn('t-body mt-1 max-sm:pl-[1.9rem]', !open && 'max-sm:hidden')}>
+      <p id={panelId} className={cn('t-body mt-2 leading-relaxed max-sm:pl-[2.4rem]', !open && 'max-sm:hidden')}>
         {service.description}
       </p>
     </SpotlightCard>

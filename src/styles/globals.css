@@ -42,7 +42,8 @@
 /* Tighter vertical rhythm on phones */
 @media (max-width: 767px) {
   :root {
-    --section-y: 2.25rem;
+    --section-y: 2.75rem;
+    --gutter: clamp(1rem, 5vw, 1.5rem);
   }
 }
 
@@ -54,6 +55,9 @@ html {
   color-scheme: dark;
   -webkit-text-size-adjust: 100%;
   scroll-padding-top: 5rem;
+  overflow-x: hidden;
+  /* Ensure no element can push past viewport edge on iOS */
+  max-width: 100%;
 }
 
 html.lenis,
@@ -76,7 +80,9 @@ body {
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100%;
+  position: relative;
 }
 
 ::selection {
@@ -109,17 +115,20 @@ body {
 /* ------------------------------------------------------------------ */
 .t-display {
   font-size: var(--fs-display);
-  line-height: 1.0;
-  letter-spacing: -0.045em;
-  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  font-weight: 700;
   text-wrap: balance;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 .t-h2 {
   font-size: var(--fs-h2);
-  line-height: 1;
-  letter-spacing: -0.035em;
-  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 700;
   text-wrap: balance;
+  overflow-wrap: break-word;
 }
 .t-h3 {
   font-size: var(--fs-h3);
@@ -235,15 +244,20 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.4em;
-  padding: 0.28em 0.7em;
+  padding: 0.3em 0.75em;
   border-radius: 999px;
-  border: 1px solid var(--line);
-  background: rgb(255 255 255 / 0.03);
+  border: 1px solid rgb(242 240 234 / 0.14);
+  background: rgb(255 255 255 / 0.045);
   font-family: var(--font-mono);
   font-size: var(--fs-small);
-  letter-spacing: 0.03em;
-  color: var(--muted);
+  letter-spacing: 0.04em;
+  color: rgb(242 240 234 / 0.7);
   white-space: nowrap;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.chip:hover {
+  border-color: rgb(200 255 61 / 0.3);
+  background: rgb(200 255 61 / 0.06);
 }
 
 /* Ambient background blobs & glow */
@@ -290,9 +304,15 @@ body {
   width: max-content;
   animation: ticker 38s linear infinite;
   will-change: transform;
+  /* Prevent horizontal bleed on mobile */
+  min-width: 100%;
 }
 .ticker:hover .ticker-track {
   animation-play-state: paused;
+}
+/* Ticker container: overflow clip so animation doesn't create horizontal scrollbar */
+.ticker {
+  overflow: hidden;
 }
 
 /* Status pulse */

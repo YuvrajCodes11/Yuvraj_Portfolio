@@ -2,8 +2,7 @@ import { useRef } from 'react'
 import { m, useScroll, useTransform } from 'framer-motion'
 import { profile, rotatingWords, techStack } from '../../lib/content'
 import { useIntroReady } from '../../lib/intro'
-import { ParticleGrid } from '../fx/ParticleGrid'
-import { MaskLine, RotatingWord } from '../motion/KineticHeadline'
+import { RotatingWord } from '../motion/KineticHeadline'
 import { Magnetic } from '../motion/Magnetic'
 import { ButtonLink } from '../ui/ButtonLink'
 
@@ -23,23 +22,7 @@ export function Hero() {
   })
 
   return (
-    <section id="top" ref={ref} className="relative isolate flex min-h-[100svh] flex-col overflow-hidden">
-      {/* Ambient layers: transform-only animation, GPU friendly */}
-      <div aria-hidden className="absolute inset-0 -z-10">
-        <div
-          className="blob left-[-12%] top-[8%] h-[46vmax] w-[46vmax] bg-[var(--accent)]/40"
-          style={{ animation: 'drift-a 16s ease-in-out infinite alternate' }}
-        />
-        <div
-          className="blob bottom-[-10%] right-[-14%] h-[52vmax] w-[52vmax] bg-[var(--accent-2)]/30"
-          style={{ animation: 'drift-b 20s ease-in-out infinite alternate' }}
-        />
-        <div className="absolute inset-0">
-          <ParticleGrid />
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[var(--bg)] to-transparent" />
-      </div>
-
+    <section id="top" ref={ref} className="relative flex min-h-[100svh] flex-col">
       <m.div
         style={{ y, opacity }}
         className="container-x relative flex flex-1 flex-col justify-center pb-[clamp(1.25rem,3vw,2.5rem)] pt-[clamp(5.25rem,13vw,9rem)]"
@@ -58,12 +41,12 @@ export function Hero() {
           {profile.status}
         </m.p>
 
-        <h1 className="t-display [text-wrap:wrap]">
-          <MaskLine text="I build" play={ready} delay={0.05} />
-          <br />
-          <RotatingWord words={rotatingWords} className="t-serif" wordClassName="text-gradient" />
-          <br />
-          <MaskLine text="for growing businesses." play={ready} delay={0.3} />
+        <h1 className="t-display">
+          <span className="block leading-[1.15]">I build</span>
+          <span className="block py-[0.1em] leading-[1.15]">
+            <RotatingWord words={rotatingWords} className="t-serif text-gradient" />
+          </span>
+          <span className="block leading-[1.15]">for growing businesses.</span>
         </h1>
 
         <m.p {...fade(0.75)} className="t-lead mt-[clamp(0.9rem,0.5rem+1.6vw,2rem)] max-w-[42ch]">

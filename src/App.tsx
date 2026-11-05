@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { LazyMotion, MotionConfig } from 'framer-motion'
 import { CursorFX } from './components/fx/CursorFX'
+import { ParticleGrid } from './components/fx/ParticleGrid'
 import { Preloader } from './components/fx/Preloader'
 import { ScrollProgress } from './components/fx/ScrollProgress'
 import { Footer } from './components/layout/Footer'
@@ -188,7 +189,23 @@ export default function App() {
           <ScrollProgress />
           <CursorFX />
           <Nav />
-          <main>
+          {/* Dedicated zero-cost background layer — isolated from content to prevent WebKit tile corruption */}
+          <div
+            aria-hidden
+            className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
+            style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}
+          >
+            <div
+              className="ambient-glow-1 left-[-10%] top-[4%] h-[55vmax] w-[55vmax]"
+              style={{ animation: 'drift-a 24s ease-in-out infinite alternate' }}
+            />
+            <div
+              className="ambient-glow-2 right-[-10%] bottom-[8%] h-[55vmax] w-[55vmax]"
+              style={{ animation: 'drift-b 28s ease-in-out infinite alternate' }}
+            />
+            <ParticleGrid />
+          </div>
+          <main className="relative z-10" style={{ position: 'relative', zIndex: 10, isolation: 'isolate' }}>
             <Hero />
             <Metrics />
             <Services />

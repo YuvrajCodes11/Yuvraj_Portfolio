@@ -50,7 +50,7 @@ export function CursorFX() {
     <>
       <m.div
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[5] h-[520px] w-[520px] rounded-full"
+        className="pointer-events-none fixed left-0 top-0 z-[1] h-[520px] w-[520px] rounded-full"
         style={{
           x: glowX,
           y: glowY,

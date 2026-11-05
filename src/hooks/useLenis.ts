@@ -2,16 +2,30 @@ import { useEffect } from 'react'
 import Lenis from 'lenis'
 import { setLenis } from '../lib/scroll'
 
-/** Inertia scrolling on desktop; native scrolling on touch and for reduced-motion users. */
+/**
+ * Responsive scrolling physics:
+ * - Desktop (pointer: fine): Lenis smooth inertia scrolling (lerp: 0.1, smoothWheel: true).
+ * - Mobile / Touch (pointer: coarse): Disabled completely so iOS Safari & Android
+ *   use native 120Hz hardware-accelerated momentum scrolling.
+ */
 export function useLenis(): void {
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduced) return
+    const isTouch = window.matchMedia('(pointer: coarse)').matches
+    const hasFinePointer = window.matchMedia('(pointer: fine)').matches
+
+    // On mobile, touch screens, or reduced motion, never hijack native momentum scrolling
+    if (reduced || isTouch || !hasFinePointer) {
+      setLenis(null)
+      return
+    }
 
     const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      lerp: 0.1,
       smoothWheel: true,
+      syncTouch: false,
     })
     setLenis(lenis)
 

@@ -23,18 +23,24 @@ function markSeen(): void {
 function shouldSkip(): boolean {
   if (typeof window === 'undefined') return false
   try {
+    const isTouch = window.matchMedia('(pointer: coarse)').matches
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    return alreadySeen() || reduced
+    const navWithConn = navigator as unknown as { connection?: { saveData?: boolean; effectiveType?: string } }
+    const conn = navWithConn.connection
+    const isSlow = Boolean(conn && (conn.saveData || (conn.effectiveType && conn.effectiveType.includes('2g'))))
+    return alreadySeen() || reduced || isTouch || isSlow
   } catch {
     return false
   }
 }
 
 /**
- * Counter + curtain-lift intro. Plays once per session and is skipped for
- * reduced-motion users. SSR-safe: all browser APIs are touched inside effects.
+ * High-performance counter + curtain-lift intro.
+ * Instant skip on touch/mobile, repeat visits, or slow networks (< 350ms on desktop).
+ * SSR-safe and does not block DOM rendering.
  */
 export function Preloader({ onReveal }: { onReveal: () => void }) {
+  const [skip] = useState(() => shouldSkip())
   const [visible, setVisible] = useState(() => !shouldSkip())
   const [count, setCount] = useState(0)
   const reveal = useRef(onReveal)
@@ -44,13 +50,14 @@ export function Preloader({ onReveal }: { onReveal: () => void }) {
   }, [onReveal])
 
   useEffect(() => {
-    if (!visible) {
+    if (skip || !visible) {
       reveal.current()
       return
     }
+
     const controls = animate(0, 100, {
-      duration: 1.15,
-      ease: [0.65, 0, 0.35, 1],
+      duration: 0.32,
+      ease: [0.33, 1, 0.68, 1],
       onUpdate: (v) => setCount(Math.round(v)),
       onComplete: () => {
         markSeen()
@@ -59,19 +66,19 @@ export function Preloader({ onReveal }: { onReveal: () => void }) {
       },
     })
     return () => controls.stop()
-  }, [visible])
+  }, [skip, visible])
 
   return (
     <AnimatePresence>
       {visible ? (
         <m.div
           key="preloader"
-          className="fixed inset-0 z-[100] flex items-end justify-between bg-[var(--bg)] p-[var(--gutter)]"
+          className="fixed inset-0 z-[100] flex items-end justify-between bg-[var(--bg)] p-[var(--gutter)] pointer-events-none"
           initial={{ y: 0 }}
-          exit={{ y: '-100%', transition: { duration: 0.9, ease: EASE } }}
+          exit={{ y: '-100%', transition: { duration: 0.35, ease: EASE } }}
         >
-          <span className="t-mono">Yuvraj Singh Sidhu</span>
-          <span className="t-serif text-[clamp(4rem,18vw,12rem)] leading-none text-[var(--fg)] tabular-nums">
+          <span className="t-mono font-medium tracking-wider">Yuvraj Sidhu</span>
+          <span className="t-serif text-[clamp(3.5rem,15vw,10rem)] leading-none text-[var(--fg)] tabular-nums">
             {String(count).padStart(2, '0')}
           </span>
         </m.div>

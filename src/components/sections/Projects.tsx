@@ -65,10 +65,10 @@ function ProjectCard({
   const lead = i === 0
   return (
     <m.article
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '0px 0px -10% 0px' }}
-      transition={{ duration: 0.8, delay: (i % 3) * 0.08, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, margin: '0px 0px 220px 0px', amount: 0.01 }}
+      transition={{ duration: 0.35, delay: (i % 3) * 0.05, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
         'w-[80vw] max-w-[22rem] shrink-0 snap-start md:w-auto md:max-w-none',
         spanFor(i, total),

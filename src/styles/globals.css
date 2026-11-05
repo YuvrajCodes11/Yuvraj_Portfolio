@@ -163,16 +163,11 @@ body {
 }
 
 .text-gradient {
+  color: var(--accent);
   background: linear-gradient(100deg, var(--accent) 0%, var(--accent-2) 55%, var(--accent) 100%);
-  background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
-  animation: gradient-shift 8s ease-in-out infinite alternate;
-}
-@keyframes gradient-shift {
-  from { background-position: 0% 50%; }
-  to { background-position: 100% 50%; }
+  -webkit-text-fill-color: transparent;
 }
 
 /* ------------------------------------------------------------------ */

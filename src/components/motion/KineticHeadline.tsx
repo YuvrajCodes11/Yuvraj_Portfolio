@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { m } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
@@ -12,30 +12,32 @@ interface MaskLineProps {
 }
 
 /**
- * Dynamic kinetic staggered line where each character springs smoothly into view.
- * Zero negative margins and no clipping overflow masks, preserving full ascender/descender clearance.
+ * Kinetic staggered line — each word slides up from below.
+ * Uses word-level overflow clip instead of char-level to keep GPU layer count low.
+ * No will-change on individual chars (too expensive on mobile).
  */
 export function MaskLine({ text, delay = 0, play = true, className }: MaskLineProps) {
   const words = text.split(' ')
   let charIndex = 0
   return (
-    <span className={className}>
+    <span className={className} aria-label={text}>
       <span className="sr-only">{text}</span>
       {words.map((word, wi) => (
         <span
           key={wi}
           aria-hidden
-          className="inline-block whitespace-nowrap align-baseline py-[0.1em]"
+          // overflow-hidden clips the upward slide; pb/mb trick avoids descender clip
+          className="inline-block whitespace-nowrap overflow-hidden align-bottom pb-[0.08em] -mb-[0.08em]"
         >
           {[...word].map((ch) => {
             const i = charIndex++
             return (
               <m.span
                 key={i}
-                className="inline-block will-change-transform"
-                initial={{ opacity: 0, y: '75%', rotate: 5 }}
-                animate={play ? { opacity: 1, y: '0%', rotate: 0 } : { opacity: 0, y: '75%', rotate: 5 }}
-                transition={{ duration: 0.65, delay: delay + i * 0.025, ease: EASE }}
+                className="inline-block"
+                initial={{ y: '110%' }}
+                animate={play ? { y: '0%' } : { y: '110%' }}
+                transition={{ duration: 0.72, delay: delay + i * 0.022, ease: EASE }}
               >
                 {ch}
               </m.span>
@@ -57,11 +59,11 @@ interface RotatingWordProps {
 }
 
 /**
- * Kinetic CSS Grid stacked word rotator.
- * Every word occupies grid-area: 1 / 1 with locked min-height and line-height,
- * preventing layout shift while animating active words with dynamic 3D transitions.
+ * Rolling word swap using AnimatePresence mode="wait".
+ * Words slide in from below, out upward — clean, no flicker.
+ * Container reserves the longest word's width via invisible sizer (zero layout shift).
  */
-export function RotatingWord({ words, intervalMs = 2600, className, wordClassName }: RotatingWordProps) {
+export function RotatingWord({ words, intervalMs = 2800, className, wordClassName }: RotatingWordProps) {
   const [i, setI] = useState(0)
 
   useEffect(() => {
@@ -69,51 +71,39 @@ export function RotatingWord({ words, intervalMs = 2600, className, wordClassNam
     return () => window.clearInterval(id)
   }, [words.length, intervalMs])
 
-  const longestWord = words.reduce((longest, w) => (w.length > longest.length ? w : longest), '')
+  const longestWord = words.reduce((acc, w) => (w.length > acc.length ? w : acc), '')
 
   return (
     <span
-      className={`relative inline-grid align-baseline py-[0.15em] ${className ?? ''}`}
-      style={{
-        display: 'inline-grid',
-        gridTemplateColumns: '1fr',
-        gridTemplateRows: '1fr',
-        minHeight: '1.25em',
-        lineHeight: 1.15,
-        verticalAlign: 'baseline',
-      }}
+      className={`relative inline-grid overflow-hidden align-bottom pb-[0.1em] -mb-[0.1em] ${className ?? ''}`}
+      style={{ display: 'inline-grid', gridTemplateColumns: '1fr', gridTemplateRows: '1fr' }}
     >
-      {/* Invisible sizer guarantees rock-solid layout bounding box */}
+      {/* Invisible sizer — locks the width to the longest word */}
       <span
         aria-hidden
-        className="invisible pointer-events-none select-none whitespace-nowrap"
-        style={{ gridArea: '1 / 1', lineHeight: 'inherit' }}
+        className="invisible col-start-1 row-start-1 whitespace-nowrap pointer-events-none select-none"
       >
         {longestWord}
       </span>
-      <span className="sr-only" aria-live="polite">
+
+      {/* Screen-reader live region */}
+      <span className="sr-only" aria-live="polite" aria-atomic="true">
         {words[i]}
       </span>
-      {words.map((w, index) => {
-        const isActive = index === i
-        return (
-          <span
-            key={w}
-            aria-hidden={!isActive}
-            className={`whitespace-nowrap will-change-transform ${wordClassName ?? ''}`}
-            style={{
-              gridArea: '1 / 1',
-              lineHeight: 'inherit',
-              transform: isActive ? 'translate3d(0, 0%, 0)' : 'translate3d(0, 105%, 0)',
-              opacity: isActive ? 1 : 0,
-              pointerEvents: isActive ? 'auto' : 'none',
-              transition: 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease',
-            }}
-          >
-            {w}
-          </span>
-        )
-      })}
+
+      <AnimatePresence mode="wait" initial={false}>
+        <m.span
+          key={words[i]}
+          aria-hidden
+          className={`col-start-1 row-start-1 whitespace-nowrap ${wordClassName ?? ''}`}
+          initial={{ y: '100%', opacity: 0 }}
+          animate={{ y: '0%', opacity: 1 }}
+          exit={{ y: '-100%', opacity: 0 }}
+          transition={{ duration: 0.52, ease: EASE }}
+        >
+          {words[i]}
+        </m.span>
+      </AnimatePresence>
     </span>
   )
 }

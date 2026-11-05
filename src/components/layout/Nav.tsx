@@ -54,9 +54,14 @@ export function Nav() {
   return (
     <>
       <m.header
-        className="fixed inset-x-0 top-0 z-50 pt-[max(0.6rem,env(safe-area-inset-top))]"
+        className={cn(
+          'fixed inset-x-0 top-0 z-50 transition-[padding,background-color,border-color,box-shadow] duration-300',
+          scrolled
+            ? 'border-b border-[var(--line)]/60 bg-[var(--bg)]/90 backdrop-blur-xl shadow-[0_1px_24px_-8px_rgb(0_0_0/0.9)] py-2'
+            : 'bg-transparent pt-[max(0.6rem,env(safe-area-inset-top))] pb-1',
+        )}
         animate={{ y: hidden && !open ? '-120%' : '0%' }}
-        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="container-x flex items-center justify-between gap-3">
           <a

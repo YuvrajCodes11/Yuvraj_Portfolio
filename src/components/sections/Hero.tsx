@@ -12,20 +12,29 @@ export function Hero() {
   const ready = useIntroReady()
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '16%'])
-  const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0])
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '12%'])
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
 
   const fade = (delay: number) => ({
-    initial: { opacity: 0, y: 18 },
-    animate: ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 },
-    transition: { duration: 0.8, delay, ease: EASE },
+    initial: { opacity: 0, y: 14 },
+    animate: ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 },
+    transition: { duration: 0.7, delay, ease: EASE },
   })
 
   return (
-    <section id="top" ref={ref} className="relative flex min-h-[100svh] flex-col">
+    <section
+      id="top"
+      ref={ref}
+      className="relative flex min-h-[100svh] flex-col"
+    >
+      {/*
+        The inner m.div uses parallax y + opacity. We give it explicit top padding
+        to clear the fixed nav (h-16 ≈ 64px → 5rem is safe across all breakpoints).
+        justify-center distributes remaining height vertically.
+      */}
       <m.div
         style={{ y, opacity }}
-        className="container-x relative flex flex-1 flex-col justify-center pb-[clamp(1.25rem,3vw,2.5rem)] pt-[clamp(5.25rem,13vw,9rem)]"
+        className="container-x relative flex flex-1 flex-col justify-center pt-[max(5.5rem,env(safe-area-inset-top)+5.5rem)] pb-[clamp(1.25rem,3vw,2.5rem)]"
       >
         <m.p
           {...fade(0.05)}
@@ -41,27 +50,32 @@ export function Hero() {
           {profile.status}
         </m.p>
 
+        {/*
+          h1 uses t-display (line-height: 0.94). We override to 1.05 so descenders
+          on 'g','p','y' in the RotatingWord are not clipped by the tight leading.
+          z-index: 20 keeps it above blob/canvas layers.
+        */}
         <h1
-          className="t-display relative z-20 [text-wrap:wrap]"
-          style={{ position: 'relative', zIndex: 20, lineHeight: 1.15 }}
+          className="t-display relative z-20 [text-wrap:balance]"
+          style={{ lineHeight: 1.08 }}
         >
-          <span className="block py-[0.08em] leading-[1.15]">
+          <span className="block leading-[1.08]">
             <MaskLine text="I build" play={ready} delay={0.05} />
           </span>
-          <span className="block py-[0.15em] leading-[1.15]">
+          <span className="block leading-[1.08]" style={{ paddingBlock: '0.12em' }}>
             <RotatingWord words={rotatingWords} className="t-serif" wordClassName="text-gradient" />
           </span>
-          <span className="block py-[0.08em] leading-[1.15]">
-            <MaskLine text="for growing businesses." play={ready} delay={0.3} />
+          <span className="block leading-[1.08]">
+            <MaskLine text="for growing businesses." play={ready} delay={0.28} />
           </span>
         </h1>
 
-        <m.p {...fade(0.75)} className="t-lead mt-[clamp(0.9rem,0.5rem+1.6vw,2rem)] max-w-[42ch]">
+        <m.p {...fade(0.52)} className="t-lead mt-[clamp(1rem,0.6rem+1.8vw,2.2rem)] max-w-[44ch]">
           {profile.pitch}
         </m.p>
 
         <m.div
-          {...fade(0.9)}
+          {...fade(0.68)}
           className="mt-[clamp(1rem,0.6rem+1.6vw,2rem)] flex flex-wrap items-center gap-2 sm:gap-3"
         >
           <Magnetic>
@@ -80,7 +94,7 @@ export function Hero() {
         </m.div>
 
         <m.ul
-          {...fade(1.05)}
+          {...fade(0.84)}
           className="mt-[clamp(1rem,0.7rem+1.6vw,2.25rem)] flex flex-wrap gap-1.5 sm:gap-2"
         >
           {profile.proof.map((p) => (
@@ -92,7 +106,7 @@ export function Hero() {
         </m.ul>
       </m.div>
 
-      {/* Tech ticker */}
+      {/* Tech ticker — sits at the natural bottom of the section */}
       <div
         aria-hidden
         className="ticker relative border-y border-[var(--line)] bg-[var(--bg)]/60 py-2.5 backdrop-blur sm:py-3.5"

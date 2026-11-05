@@ -23,21 +23,22 @@ function markSeen(): void {
 function shouldSkip(): boolean {
   if (typeof window === 'undefined') return false
   try {
-    const isTouch = window.matchMedia('(pointer: coarse)').matches
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const navWithConn = navigator as unknown as { connection?: { saveData?: boolean; effectiveType?: string } }
     const conn = navWithConn.connection
     const isSlow = Boolean(conn && (conn.saveData || (conn.effectiveType && conn.effectiveType.includes('2g'))))
-    return alreadySeen() || reduced || isTouch || isSlow
+    return alreadySeen() || reduced || isSlow
   } catch {
     return false
   }
 }
 
 /**
- * Stylish counter + curtain-lift intro.
- * Smooth 0-100 count, silky curtain exit, and cleanly unmounts from the DOM.
- * Plays once per session; skipped for reduced-motion or repeat visits.
+ * Minimal counter + curtain-lift intro.
+ * - Plays once per session (sessionStorage key).
+ * - Skipped for slow connections & prefers-reduced-motion.
+ * - Runs on both desktop AND mobile (removed isTouch skip so mobile users see it too).
+ * - Duration trimmed to 0.65s so the reveal feels fast, not laggy.
  */
 export function Preloader({ onReveal }: { onReveal: () => void }) {
   const [skip] = useState(() => shouldSkip())
@@ -56,7 +57,7 @@ export function Preloader({ onReveal }: { onReveal: () => void }) {
     }
 
     const controls = animate(0, 100, {
-      duration: 0.85,
+      duration: 0.65,
       ease: [0.65, 0, 0.35, 1],
       onUpdate: (v) => setCount(Math.round(v)),
       onComplete: () => {
@@ -73,9 +74,10 @@ export function Preloader({ onReveal }: { onReveal: () => void }) {
       {visible ? (
         <m.div
           key="preloader"
-          className="fixed inset-0 z-[100] flex items-end justify-between bg-[var(--bg)] p-[var(--gutter)] pointer-events-none"
+          className="fixed inset-0 z-[100] flex items-end justify-between bg-[var(--bg)] p-[var(--gutter)]"
+          style={{ pointerEvents: 'none' }}
           initial={{ y: 0 }}
-          exit={{ y: '-100%', transition: { duration: 0.75, ease: EASE } }}
+          exit={{ y: '-100%', transition: { duration: 0.6, ease: EASE } }}
         >
           <span className="t-mono font-medium tracking-wider">Yuvraj Singh Sidhu</span>
           <span className="t-serif text-[clamp(4rem,18vw,12rem)] leading-none text-[var(--fg)] tabular-nums">

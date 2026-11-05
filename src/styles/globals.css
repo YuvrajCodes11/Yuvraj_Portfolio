@@ -53,7 +53,7 @@ html {
   background: var(--bg);
   color-scheme: dark;
   -webkit-text-size-adjust: 100%;
-  scroll-padding-top: 4.5rem;
+  scroll-padding-top: 5rem;
 }
 
 html.lenis,
@@ -109,7 +109,7 @@ body {
 /* ------------------------------------------------------------------ */
 .t-display {
   font-size: var(--fs-display);
-  line-height: 0.94;
+  line-height: 1.0;
   letter-spacing: -0.045em;
   font-weight: 600;
   text-wrap: balance;
@@ -253,6 +253,9 @@ body {
   filter: blur(80px);
   opacity: 0.35;
   pointer-events: none;
+  /* Promote to own GPU layer so blur doesn't repaint parent stacking context */
+  transform: translateZ(0);
+  will-change: transform;
 }
 .ambient-glow-1 {
   position: absolute;

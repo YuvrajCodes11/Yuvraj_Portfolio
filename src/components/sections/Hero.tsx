@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { m } from 'framer-motion'
+import { m, useScroll, useTransform } from 'framer-motion'
 import { profile, rotatingWords, techStack } from '../../lib/content'
 import { useIntroReady } from '../../lib/intro'
 import { MaskLine, RotatingWord } from '../motion/KineticHeadline'
@@ -11,6 +11,9 @@ const EASE = [0.22, 1, 0.36, 1] as const
 export function Hero() {
   const ready = useIntroReady()
   const ref = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '16%'])
+  const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0])
 
   const fade = (delay: number) => ({
     initial: { opacity: 0, y: 18 },
@@ -19,13 +22,11 @@ export function Hero() {
   })
 
   return (
-    <section
-      id="hero"
-      ref={ref}
-      className="relative w-full min-h-screen flex flex-col justify-between pt-24 pb-12 sm:pt-32 sm:pb-16"
-    >
-      <div id="top" className="absolute top-0 left-0 pointer-events-none -z-50" />
-      <div className="container-x relative z-20 flex flex-1 flex-col justify-center">
+    <section id="top" ref={ref} className="relative flex min-h-[100svh] flex-col">
+      <m.div
+        style={{ y, opacity }}
+        className="container-x relative flex flex-1 flex-col justify-center pb-[clamp(1.25rem,3vw,2.5rem)] pt-[clamp(5.25rem,13vw,9rem)]"
+      >
         <m.p
           {...fade(0.05)}
           className="chip mb-[clamp(0.9rem,0.5rem+1.6vw,1.9rem)] self-start"
@@ -40,36 +41,38 @@ export function Hero() {
           {profile.status}
         </m.p>
 
-        <h1 className="relative z-20 block text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[var(--fg)] leading-[1.12]">
-          <span className="block leading-[1.12]">
+        <h1
+          className="t-display relative z-20 [text-wrap:wrap]"
+          style={{ position: 'relative', zIndex: 20, lineHeight: 1.15 }}
+        >
+          <span className="block py-[0.08em] leading-[1.15]">
             <MaskLine text="I build" play={ready} delay={0.05} />
           </span>
-          <span className="block py-[0.1em] leading-[1.12]">
-            <RotatingWord words={rotatingWords} className="t-serif text-gradient font-normal italic" />
+          <span className="block py-[0.15em] leading-[1.15]">
+            <RotatingWord words={rotatingWords} className="t-serif" wordClassName="text-gradient" />
           </span>
-          <span className="block leading-[1.12]">
-            <MaskLine text="for growing businesses." play={ready} delay={0.25} />
+          <span className="block py-[0.08em] leading-[1.15]">
+            <MaskLine text="for growing businesses." play={ready} delay={0.3} />
           </span>
         </h1>
 
-        <m.p {...fade(0.4)} className="t-lead mt-6 sm:mt-8 max-w-[42ch]">
+        <m.p {...fade(0.75)} className="t-lead mt-[clamp(0.9rem,0.5rem+1.6vw,2rem)] max-w-[42ch]">
           {profile.pitch}
         </m.p>
 
         <m.div
-          {...fade(0.55)}
-          className="relative flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-8 z-10"
+          {...fade(0.9)}
+          className="mt-[clamp(1rem,0.6rem+1.6vw,2rem)] flex flex-wrap items-center gap-2 sm:gap-3"
         >
-          <Magnetic strength={0.2}>
-            <ButtonLink href="#work" cursorLabel="View" className="w-full sm:w-auto justify-center">
+          <Magnetic>
+            <ButtonLink href="#work" cursorLabel="View">
               Case studies
             </ButtonLink>
           </Magnetic>
-          <Magnetic strength={0.2}>
+          <Magnetic>
             <ButtonLink
               href={`mailto:${profile.email}?subject=Free consultation request`}
               variant="ghost"
-              className="w-full sm:w-auto justify-center"
             >
               Free consultation
             </ButtonLink>
@@ -77,8 +80,8 @@ export function Hero() {
         </m.div>
 
         <m.ul
-          {...fade(0.7)}
-          className="mt-6 sm:mt-8 flex flex-wrap gap-1.5 sm:gap-2"
+          {...fade(1.05)}
+          className="mt-[clamp(1rem,0.7rem+1.6vw,2.25rem)] flex flex-wrap gap-1.5 sm:gap-2"
         >
           {profile.proof.map((p) => (
             <li key={p} className="chip">
@@ -87,12 +90,12 @@ export function Hero() {
             </li>
           ))}
         </m.ul>
-      </div>
+      </m.div>
 
       {/* Tech ticker */}
       <div
         aria-hidden
-        className="ticker relative border-y border-[var(--line)] bg-[var(--bg)]/60 py-2.5 backdrop-blur sm:py-3.5 mt-8"
+        className="ticker relative border-y border-[var(--line)] bg-[var(--bg)]/60 py-2.5 backdrop-blur sm:py-3.5"
         style={{
           maskImage: 'linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)',
           WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)',

@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { LazyMotion, MotionConfig } from 'framer-motion'
+import { domAnimation, LazyMotion, MotionConfig } from 'framer-motion'
 import { CursorFX } from './components/fx/CursorFX'
 import { ParticleGrid } from './components/fx/ParticleGrid'
 import { Preloader } from './components/fx/Preloader'
@@ -17,9 +17,6 @@ import { Stack } from './components/sections/Stack'
 import { useLenis } from './hooks/useLenis'
 import { profile, services, techStack } from './lib/content'
 import { IntroContext } from './lib/intro'
-
-/** Animation features are fetched as a separate chunk, after first paint. */
-const loadFeatures = () => import('./lib/motionFeatures').then((mod) => mod.default)
 
 export default function App() {
   const [ready, setReady] = useState(false)
@@ -181,7 +178,7 @@ export default function App() {
   )
 
   return (
-    <LazyMotion features={loadFeatures} strict>
+    <LazyMotion features={domAnimation} strict>
       <MotionConfig reducedMotion="user">
         <IntroContext.Provider value={ready}>
           <script type="application/ld+json">{JSON.stringify(schema)}</script>

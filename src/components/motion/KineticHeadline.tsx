@@ -32,9 +32,9 @@ export function MaskLine({ text, delay = 0, play = true, className }: MaskLinePr
             return (
               <m.span
                 key={i}
-                className="inline-block will-change-transform"
-                initial={{ opacity: 0, y: '75%', rotate: 5 }}
-                animate={play ? { opacity: 1, y: '0%', rotate: 0 } : { opacity: 0, y: '75%', rotate: 5 }}
+                className="inline-block"
+                initial={{ opacity: 0, y: 16 }}
+                animate={play ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
                 transition={{ duration: 0.65, delay: delay + i * 0.025, ease: EASE }}
               >
                 {ch}
@@ -100,14 +100,14 @@ export function RotatingWord({ words, intervalMs = 2600, className, wordClassNam
           <span
             key={w}
             aria-hidden={!isActive}
-            className={`whitespace-nowrap will-change-transform ${wordClassName ?? ''}`}
+            className={`whitespace-nowrap ${wordClassName ?? ''}`}
             style={{
               gridArea: '1 / 1',
               lineHeight: 'inherit',
-              transform: isActive ? 'translate3d(0, 0%, 0)' : 'translate3d(0, 105%, 0)',
+              transform: isActive ? 'translateY(0)' : 'translateY(100%)',
               opacity: isActive ? 1 : 0,
               pointerEvents: isActive ? 'auto' : 'none',
-              transition: 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease',
+              transition: 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease',
             }}
           >
             {w}
